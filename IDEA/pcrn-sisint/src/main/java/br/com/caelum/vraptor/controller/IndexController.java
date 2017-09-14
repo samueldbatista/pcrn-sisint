@@ -1,24 +1,20 @@
 package br.com.caelum.vraptor.controller;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.pcrn.sisint.anotacoes.Transacional;
-import br.pcrn.sisint.dao.UsuarioDao;
-import br.pcrn.sisint.dominio.TipoUsuario;
+import br.pcrn.sisint.dao.UsuarioDAO;
 import br.pcrn.sisint.dominio.Usuario;
-
-import java.time.LocalDateTime;
 
 @Controller
 public class IndexController {
 
 	private final Result result;
-	private final UsuarioDao usuarioDao;
+	private final UsuarioDAO usuarioDAO;
 	/**
 	 * @deprecated CDI eyes only
 	 */
@@ -27,9 +23,9 @@ public class IndexController {
 	}
 	
 	@Inject
-	public IndexController(Result result, UsuarioDao usuarioDao) {
+	public IndexController(Result result, UsuarioDAO usuarioDAO) {
 		this.result = result;
-		this.usuarioDao = usuarioDao;
+		this.usuarioDAO = usuarioDAO;
 	}
 
 	@Path("/")
@@ -40,10 +36,9 @@ public class IndexController {
 	@Path("/teste")
 	public void teste(){
 	}
-	@Path("/salvar")
-	@Transacional
+//	@Path("/salvar")
 	public void salvar(Usuario usuario){
-		this.usuarioDao.salvar(usuario);
+		this.usuarioDAO.salvar(usuario);
 		this.result.of(this).teste();
 	}
 
