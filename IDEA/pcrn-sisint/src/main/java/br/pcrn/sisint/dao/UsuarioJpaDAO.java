@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 /**
  * Created by samue on 08/09/2017.
  */
-public class UsuarioJpaDao implements UsuarioDao{
+public class UsuarioJpaDAO implements UsuarioDAO {
 
     private EntityManager manager;
 
@@ -16,12 +16,12 @@ public class UsuarioJpaDao implements UsuarioDao{
      * @deprecated CDI
      */
     @Deprecated
-    public UsuarioJpaDao() {
+    public UsuarioJpaDAO() {
         this(null);
     }
 
     @Inject
-    public UsuarioJpaDao(EntityManager entityManager) {
+    public UsuarioJpaDAO(EntityManager entityManager) {
         this.manager = entityManager;
     }
 
