@@ -7,10 +7,10 @@ import javax.persistence.Id;
 /**
  * Created by samue on 08/09/2017.
  */
-//@Entity
+@Entity
 public class Setor {
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String nome;

@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" uri="tagSisInt" %>
 <!DOCTYPE html>
-<tags:layout>
+<tags:teste>
     <jsp:attribute name="cabecalho">
     </jsp:attribute>
     <jsp:attribute name="rodape">
@@ -24,4 +24,4 @@
         </form>
 
     </jsp:body>
-</tags:layout>
+</tags:teste>

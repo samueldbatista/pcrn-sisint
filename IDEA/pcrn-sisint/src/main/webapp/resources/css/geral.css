@@ -1,0 +1,20 @@
+.table-line-sm {
+    line-height: 10px;
+}
+
+.card {
+    border-radius: 0px;
+}
+
+.card-header-sm {
+    padding: 0px 0px;
+}
+
+.titulo-cartao {
+    margin: 8px 8px;
+    color: white;
+}
+
+.card-header:first-child {
+    border-radius: 0px;
+}

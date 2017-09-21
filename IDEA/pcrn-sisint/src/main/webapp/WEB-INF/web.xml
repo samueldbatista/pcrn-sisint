@@ -6,7 +6,17 @@
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 
   <display-name>sisInt</display-name>
-  
+
+    <context-param>
+        <param-name>br.com.caelum.vraptor.encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>pt_BR</param-value>
+    </context-param>
+
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>messages</param-value>
@@ -15,5 +25,12 @@
   <listener>
     <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
   </listener>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
   
 </web-app>

@@ -1,34 +1,46 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * Created by samue on 09/09/2017.
  */
-//@Entity
+@Entity
 public class Servico {
-//    @Id
-//    @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private Long id;
-    private LocalDateTime dataAbertura;
-    private LocalDateTime dataFechamento;
+
+    @Column(columnDefinition = "text")
+    private String titulo;
+
+    private Calendar dataAbertura;
+
+    private Calendar dataFechamento;
+
+    @Column(columnDefinition = "text")
     private String descricao;
+
     private boolean deletado;
 
 //    @OneToOne(fetch = FetchType.EAGER)
 
-    private Usuario usuarioResponsavel;
+//    private Usuario usuarioResponsavel;
     private StatusServico statusServico;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigoServico;
 
-//    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Tarefa> tarefas;
 
-//    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private Setor setorSolicitante;
-    private LocalDateTime prazoFinalização;
+
+    private Calendar prazoFinalização;
 
     public Long getId() {
         return id;
@@ -38,19 +50,19 @@ public class Servico {
         this.id = id;
     }
 
-    public LocalDateTime getDataAbertura() {
+    public Calendar getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(LocalDateTime dataAbertura) {
+    public void setDataAbertura(Calendar dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public LocalDateTime getDataFechamento() {
+    public Calendar getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(LocalDateTime dataFechamento) {
+    public void setDataFechamento(Calendar dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
@@ -70,13 +82,21 @@ public class Servico {
         this.deletado = deletado;
     }
 
-    public Usuario getUsuarioResponsavel() {
-        return usuarioResponsavel;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setUsuarioResponsavel(Usuario usuarioResponsavel) {
-        this.usuarioResponsavel = usuarioResponsavel;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
+
+    //    public Usuario getUsuarioResponsavel() {
+//        return usuarioResponsavel;
+//    }
+//
+//    public void setUsuarioResponsavel(Usuario usuarioResponsavel) {
+//        this.usuarioResponsavel = usuarioResponsavel;
+//   }
 
     public StatusServico getStatusServico() {
         return statusServico;
@@ -110,11 +130,11 @@ public class Servico {
         this.setorSolicitante = setorSolicitante;
     }
 
-    public LocalDateTime getPrazoFinalização() {
+    public Calendar getPrazoFinalização() {
         return prazoFinalização;
     }
 
-    public void setPrazoFinalização(LocalDateTime prazoFinalização) {
+    public void setPrazoFinalização(Calendar prazoFinalização) {
         this.prazoFinalização = prazoFinalização;
     }
 
@@ -126,7 +146,7 @@ public class Servico {
                 ", dataFechamento=" + dataFechamento +
                 ", descricao='" + descricao + '\'' +
                 ", deletado=" + deletado +
-                ", usuarioResponsavel=" + usuarioResponsavel +
+//                ", usuarioResponsavel=" + usuarioResponsavel +
                 ", statusServico=" + statusServico +
                 ", codigoServico=" + codigoServico +
                 ", tarefas=" + tarefas +
@@ -136,38 +156,13 @@ public class Servico {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Servico servico = (Servico) o;
-
-        if (deletado != servico.deletado) return false;
-        if (id != null ? !id.equals(servico.id) : servico.id != null) return false;
-        if (dataAbertura != null ? !dataAbertura.equals(servico.dataAbertura) : servico.dataAbertura != null)
-            return false;
-        if (dataFechamento != null ? !dataFechamento.equals(servico.dataFechamento) : servico.dataFechamento != null)
-            return false;
-        if (descricao != null ? !descricao.equals(servico.descricao) : servico.descricao != null) return false;
-        if (usuarioResponsavel != null ? !usuarioResponsavel.equals(servico.usuarioResponsavel) : servico.usuarioResponsavel != null)
-            return false;
-        if (statusServico != servico.statusServico) return false;
-        if (codigoServico != null ? !codigoServico.equals(servico.codigoServico) : servico.codigoServico != null)
-            return false;
-        if (tarefas != null ? !tarefas.equals(servico.tarefas) : servico.tarefas != null) return false;
-        if (setorSolicitante != null ? !setorSolicitante.equals(servico.setorSolicitante) : servico.setorSolicitante != null)
-            return false;
-        return prazoFinalização != null ? prazoFinalização.equals(servico.prazoFinalização) : servico.prazoFinalização == null;
-    }
-
-    @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (dataAbertura != null ? dataAbertura.hashCode() : 0);
         result = 31 * result + (dataFechamento != null ? dataFechamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (deletado ? 1 : 0);
-        result = 31 * result + (usuarioResponsavel != null ? usuarioResponsavel.hashCode() : 0);
+//        result = 31 * result + (usuarioResponsavel != null ? usuarioResponsavel.hashCode() : 0);
         result = 31 * result + (statusServico != null ? statusServico.hashCode() : 0);
         result = 31 * result + (codigoServico != null ? codigoServico.hashCode() : 0);
         result = 31 * result + (tarefas != null ? tarefas.hashCode() : 0);
