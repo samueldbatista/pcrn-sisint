@@ -5,17 +5,17 @@ Licensed under the MIT license.
 https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 */
 (function() {
-  'use strict'
+  'use strict';
 
   function noop() {}
 
-  var Waypoint = window.Waypoint
+  var Waypoint = window.Waypoint;
 
   /* http://imakewebthings.com/waypoints/shortcuts/inview */
   function Inview(options) {
-    this.options = Waypoint.Adapter.extend({}, Inview.defaults, options)
-    this.axis = this.options.horizontal ? 'horizontal' : 'vertical'
-    this.waypoints = []
+    this.options = Waypoint.Adapter.extend({}, Inview.defaults, options);
+    this.axis = this.options.horizontal ? 'horizontal' : 'vertical';
+    this.waypoints = [];
     this.createWaypoints()
   }
 
@@ -60,17 +60,17 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
           return -this.adapter.outerWidth()
         }
       }]
-    }
+    };
 
     for (var i = 0, end = configs[this.axis].length; i < end; i++) {
-      var config = configs[this.axis][i]
+      var config = configs[this.axis][i];
       this.createWaypoint(config)
     }
-  }
+  };
 
   /* Private */
   Inview.prototype.createWaypoint = function(config) {
-    var self = this
+    var self = this;
     this.waypoints.push(new Waypoint({
       element: this.options.element,
       handler: (function(config) {
@@ -81,7 +81,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       offset: config.offset,
       horizontal: this.options.horizontal
     }))
-  }
+  };
 
   /* Public */
   Inview.prototype.destroy = function() {
@@ -89,14 +89,14 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
       this.waypoints[i].destroy()
     }
     this.waypoints = []
-  }
+  };
 
   Inview.defaults = {
     enter: noop,
     entered: noop,
     exit: noop,
     exited: noop
-  }
+  };
 
   Waypoint.Inview = Inview
 }())

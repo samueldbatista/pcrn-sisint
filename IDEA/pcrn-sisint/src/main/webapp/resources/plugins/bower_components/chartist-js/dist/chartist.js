@@ -1013,8 +1013,8 @@ var Chartist = {
   };
 
 }(window, document, Chartist));
-;/**
- * Chartist path interpolation functions.
+    /**
+     * Chartist path interpolation functions.
  *
  * @module Chartist.Interpolation
  */
@@ -1350,8 +1350,8 @@ var Chartist = {
   };
 
 }(window, document, Chartist));
-;/**
- * A very basic event module that helps to generate and catch events.
+    /**
+     * A very basic event module that helps to generate and catch events.
  *
  * @module Chartist.Event
  */
@@ -1428,8 +1428,8 @@ var Chartist = {
   };
 
 }(window, document, Chartist));
-;/**
- * This module provides some basic prototype inheritance utilities.
+    /**
+     * This module provides some basic prototype inheritance utilities.
  *
  * @module Chartist.Class
  */
@@ -1539,8 +1539,8 @@ var Chartist = {
   };
 
 }(window, document, Chartist));
-;/**
- * Base for all chart types. The methods in Chartist.Base are inherited to all chart types.
+    /**
+     * Base for all chart types. The methods in Chartist.Base are inherited to all chart types.
  *
  * @module Chartist.Base
  */
@@ -1728,8 +1728,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * Chartist SVG module for simple SVG DOM abstraction
+    /**
+     * Chartist SVG module for simple SVG DOM abstraction
  *
  * @module Chartist.Svg
  */
@@ -2315,8 +2315,8 @@ var Chartist = {
     constructor: SvgList
   });
 }(window, document, Chartist));
-;/**
- * Chartist SVG path module for SVG path description creation and modification.
+    /**
+     * Chartist SVG path module for SVG path description creation and modification.
  *
  * @module Chartist.Svg.Path
  */
@@ -2700,8 +2700,8 @@ var Chartist = {
   Chartist.Svg.Path.elementDescriptions = elementDescriptions;
   Chartist.Svg.Path.join = join;
 }(window, document, Chartist));
-;/* global Chartist */
-(function (window, document, Chartist) {
+    /* global Chartist */
+    (function (window, document, Chartist) {
   'use strict';
 
   var axisUnits = {
@@ -2816,8 +2816,8 @@ var Chartist = {
   Chartist.Axis.units = axisUnits;
 
 }(window, document, Chartist));
-;/**
- * The auto scale axis uses standard linear scale projection of values along an axis. It uses order of magnitude to find a scale automatically and evaluates the available space in order to find the perfect amount of ticks for your chart.
+    /**
+     * The auto scale axis uses standard linear scale projection of values along an axis. It uses order of magnitude to find a scale automatically and evaluates the available space in order to find the perfect amount of ticks for your chart.
  * **Options**
  * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
  * ```javascript
@@ -2867,8 +2867,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * The fixed scale axis uses standard linear projection of values along an axis. It makes use of a divisor option to divide the range provided from the minimum and maximum value or the options high and low that will override the computed minimum and maximum.
+    /**
+     * The fixed scale axis uses standard linear projection of values along an axis. It makes use of a divisor option to divide the range provided from the minimum and maximum value or the options high and low that will override the computed minimum and maximum.
  * **Options**
  * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
  * ```javascript
@@ -2923,8 +2923,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * The step axis for step based charts like bar chart or step based line charts. It uses a fixed amount of ticks that will be equally distributed across the whole axis length. The projection is done using the index of the data value rather than the value itself and therefore it's only useful for distribution purpose.
+    /**
+     * The step axis for step based charts like bar chart or step based line charts. It uses a fixed amount of ticks that will be equally distributed across the whole axis length. The projection is done using the index of the data value rather than the value itself and therefore it's only useful for distribution purpose.
  * **Options**
  * The following options are used by this axis in addition to the default axis options outlined in the axis configuration of the chart default settings.
  * ```javascript
@@ -2962,8 +2962,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * The Chartist line chart can be used to draw Line or Scatter charts. If used in the browser you can access the global `Chartist` namespace where you find the `Line` function as a main entry point.
+    /**
+     * The Chartist line chart can be used to draw Line or Scatter charts. If used in the browser you can access the global `Chartist` namespace where you find the `Line` function as a main entry point.
  *
  * For examples on how to use the line chart please check the examples of the `Chartist.Line` method.
  *
@@ -3373,8 +3373,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * The bar chart module of Chartist that can be used to draw unipolar or bipolar bar and grouped bar charts.
+    /**
+     * The bar chart module of Chartist that can be used to draw unipolar or bipolar bar and grouped bar charts.
  *
  * @module Chartist.Bar
  */
@@ -3803,8 +3803,8 @@ var Chartist = {
   });
 
 }(window, document, Chartist));
-;/**
- * The pie chart module of Chartist that can be used to draw pie, donut or gauge charts
+    /**
+     * The pie chart module of Chartist that can be used to draw pie, donut or gauge charts
  *
  * @module Chartist.Pie
  */

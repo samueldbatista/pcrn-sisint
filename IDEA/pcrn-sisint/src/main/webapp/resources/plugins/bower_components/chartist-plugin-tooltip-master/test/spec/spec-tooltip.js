@@ -23,7 +23,7 @@ describe('ctPointLabels', function () {
 
     chart.container.addEventListener = function(event, listener) {
       listeners[event] = listener;
-    }
+    };
 
     var tooltip = window.Chartist.plugins.tooltip({class: 'foo'});
     tooltip(chart);

@@ -164,7 +164,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-        }
+        };
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -241,7 +241,7 @@ materialDesign = {
                 }
         }, 17)
 
-}
+};
 
 function debounce(func, wait, immediate) {
 	var timeout;
@@ -254,4 +254,4 @@ function debounce(func, wait, immediate) {
 		}, wait);
 		if (immediate && !timeout) func.apply(context, args);
 	};
-};
+}

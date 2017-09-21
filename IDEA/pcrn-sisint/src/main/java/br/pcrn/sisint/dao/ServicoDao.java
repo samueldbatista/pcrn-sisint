@@ -8,6 +8,6 @@ import java.util.List;
  * Created by samue on 17/09/2017.
  */
 public interface ServicoDao {
-    public void salvar (Servico servico);
-    public List<Servico> listarServicos();
+    void salvar(Servico servico);
+    List<Servico> listarServicos();
 }

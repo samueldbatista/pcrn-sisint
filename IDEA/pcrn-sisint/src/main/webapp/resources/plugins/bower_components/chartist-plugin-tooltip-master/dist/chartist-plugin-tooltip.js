@@ -149,7 +149,7 @@
         function setPosition(event) {
           height = height || $toolTip.offsetHeight;
           width = width || $toolTip.offsetWidth;
-          var offsetX = - width / 2 + options.tooltipOffset.x
+          var offsetX = - width / 2 + options.tooltipOffset.x;
           var offsetY = - height + options.tooltipOffset.y;
           var anchorX, anchorY;
 
