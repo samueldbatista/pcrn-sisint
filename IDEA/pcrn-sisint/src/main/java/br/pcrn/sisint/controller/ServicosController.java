@@ -35,7 +35,7 @@ public class ServicosController {
 
     }
 
-    @Post("/servicos")
+    @Post("/servicos/lista")
     @Transacional
     public void salvar(Servico servico) {
 
