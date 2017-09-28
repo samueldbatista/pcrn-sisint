@@ -1,7 +1,6 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 /**
  * Created by samue on 09/09/2017.
@@ -24,7 +23,7 @@ public class Tarefa {
 
     private StatusTarefa statusTarefa;
 
-    private LocalDateTime prazo;
+    private String prazo;
 
 
     public Long getId() {
@@ -67,11 +66,11 @@ public class Tarefa {
         this.statusTarefa = statusTarefa;
     }
 
-    public LocalDateTime getPrazo() {
+    public String getPrazo() {
         return prazo;
     }
 
-    public void setPrazo(LocalDateTime prazo) {
+    public void setPrazo(String prazo) {
         this.prazo = prazo;
     }
 

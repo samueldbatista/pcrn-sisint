@@ -1,7 +1,6 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -17,9 +16,9 @@ public class Servico {
     @Column(columnDefinition = "text")
     private String titulo;
 
-    private Calendar dataAbertura;
+    private String dataAbertura;
 
-    private Calendar dataFechamento;
+    private String dataFechamento;
 
     @Column(columnDefinition = "text")
     private String descricao;
@@ -40,7 +39,7 @@ public class Servico {
     @OneToOne(fetch = FetchType.EAGER)
     private Setor setorSolicitante;
 
-    private Calendar prazoFinalização;
+    private String prazoFinalização;
 
     public Long getId() {
         return id;
@@ -50,19 +49,19 @@ public class Servico {
         this.id = id;
     }
 
-    public Calendar getDataAbertura() {
+    public String getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(Calendar dataAbertura) {
+    public void setDataAbertura(String dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public Calendar getDataFechamento() {
+    public String getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(Calendar dataFechamento) {
+    public void setDataFechamento(String dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
@@ -130,11 +129,11 @@ public class Servico {
         this.setorSolicitante = setorSolicitante;
     }
 
-    public Calendar getPrazoFinalização() {
+    public String getPrazoFinalização() {
         return prazoFinalização;
     }
 
-    public void setPrazoFinalização(Calendar prazoFinalização) {
+    public void setPrazoFinalização(String prazoFinalização) {
         this.prazoFinalização = prazoFinalização;
     }
 
