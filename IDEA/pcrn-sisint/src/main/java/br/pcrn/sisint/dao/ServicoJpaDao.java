@@ -1,6 +1,7 @@
 package br.pcrn.sisint.dao;
 
 import br.pcrn.sisint.dominio.Servico;
+import br.pcrn.sisint.dominio.Tarefa;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -19,6 +20,20 @@ public class ServicoJpaDao implements ServicoDao {
     public void salvar(Servico servico) {
         this.manager.persist(servico);
     }
+
+//    private void referenciarServicos(Servico servico){
+//        List<Tarefa> tarefas = servico.getTarefas();
+//
+//        if(tarefas != null){
+//            for (Tarefa t: tarefas) {
+//                if(t.getServico() !=  null) {
+//                    t.setServico(null);
+//                }
+//                t.setServico(servico);
+//            }
+//
+//        }
+//    }
 
     @Override
     public List<Servico> listarServicos() {

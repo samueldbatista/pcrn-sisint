@@ -1,6 +1,7 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,9 +17,9 @@ public class Servico {
     @Column(columnDefinition = "text")
     private String titulo;
 
-    private String dataAbertura;
+    private LocalDateTime dataAbertura;
 
-    private String dataFechamento;
+    private LocalDateTime dataFechamento;
 
     @Column(columnDefinition = "text")
     private String descricao;
@@ -28,12 +29,13 @@ public class Servico {
 //    @OneToOne(fetch = FetchType.EAGER)
 
 //    private Usuario usuarioResponsavel;
+    @Enumerated(EnumType.STRING)
     private StatusServico statusServico;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoServico;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -49,19 +51,19 @@ public class Servico {
         this.id = id;
     }
 
-    public String getDataAbertura() {
+    public LocalDateTime getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(String dataAbertura) {
+    public void setDataAbertura(LocalDateTime dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public String getDataFechamento() {
+    public LocalDateTime getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(String dataFechamento) {
+    public void setDataFechamento(LocalDateTime dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 

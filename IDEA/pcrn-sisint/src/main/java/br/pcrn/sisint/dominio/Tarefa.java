@@ -8,11 +8,14 @@ import javax.persistence.*;
 @Entity
 public class Tarefa {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String titulo;
 //    @OneToOne(fetch = FetchType.EAGER)
 //    private Usuario tecnicoResponsavel;
+
+    private String tecnico;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Servico servico;
@@ -72,6 +75,30 @@ public class Tarefa {
 
     public void setPrazo(String prazo) {
         this.prazo = prazo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
+    }
+
+    public String getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(String tecnico) {
+        this.tecnico = tecnico;
     }
 
     @Override

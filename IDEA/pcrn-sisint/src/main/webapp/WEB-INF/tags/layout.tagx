@@ -63,10 +63,12 @@
                     <!-- Logo -->
                     <a class="logo" href="index.html">
                         <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                        <!--&lt;!&ndash;This is dark logo icon&ndash;&gt;<img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" />-->
+                        <!--&lt;!&ndash;This is light logo icon&ndash;&gt;<img src="${ctx}/resources/imagens/sisint-logo.png" alt="home" />-->
                     </b>
                         <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
+                        <!--&lt;!&ndash;This is dark logo text&ndash;&gt;<img src="../plugins/images/admin-text.png" alt="home" class="dark-logo" />-->
+                        <!--&lt;!&ndash;This is light logo text&ndash;&gt;<img src="../plugins/images/admin-text-dark.png" alt="home" class="light-logo" />-->
                      </span> </a>
                 </div>
                 <!-- /Logo -->
@@ -95,7 +97,7 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"><c:out value=""/></i>Dashboard</a>
+                        <a href="${linkTo[ServicosController].lista}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"><c:out value=""/></i>Serviços</a>
                     </li>
                     <li>
                         <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"><c:out value=""/></i>Profile</a>
@@ -116,9 +118,6 @@
                         <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"><c:out value=""/></i>Error 404</a>
                     </li>
                 </ul>
-                <div class="center p-20">
-                    <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger btn-block waves-effect waves-light">Upgrade to Pro</a>
-                </div>
             </div>
         </div>
         <!-- ============================================================== -->
@@ -130,16 +129,16 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Blank Page</h4> </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                           class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a>
-                        <ol class="breadcrumb">
-                            <li><a href="#">Dashboard</a></li>
-                            <li class="active">Blank Page</li>
-                        </ol>
-                    </div>
+                    <!--<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">-->
+                        <!--<h4 class="page-title">Blank Page</h4> </div>-->
+                    <!--<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">-->
+                        <!--<a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"-->
+                           <!--class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a>-->
+                        <!--<ol class="breadcrumb">-->
+                            <!--<li><a href="#">Dashboard</a></li>-->
+                            <!--<li class="active">Blank Page</li>-->
+                        <!--</ol>-->
+                    <!--</div>-->
                     <!-- /.col-lg-12 -->
                 </div>
                 <div class="row">

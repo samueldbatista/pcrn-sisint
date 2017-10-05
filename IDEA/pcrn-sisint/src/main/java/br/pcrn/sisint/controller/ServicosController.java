@@ -8,7 +8,9 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.ServicoDao;
 import br.pcrn.sisint.dominio.Servico;
+import br.pcrn.sisint.dominio.StatusServico;
 import br.pcrn.sisint.dominio.Usuario;
+import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -32,13 +34,12 @@ public class ServicosController {
     }
 
     public void form() {
-
+        result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
     }
 
-    @Post("/servicos/lista")
+    @Post("/servicos")
     @Transacional
     public void salvar(Servico servico) {
-
         this.servicoDao.salvar(servico);
         this.result.redirectTo("/servicos/lista");
     }

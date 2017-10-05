@@ -29,17 +29,19 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>Titulo</th>
+                            <th>Status</th>
+                            <th>Data de Fechamento</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <c:forEach items="${servicos}" var="servico">
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>${servico.titulo}</td>
+                            <td>${servico.statusServico.chave}</td>
+                            <td>${servico.dataFechamento}</td>
                         </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

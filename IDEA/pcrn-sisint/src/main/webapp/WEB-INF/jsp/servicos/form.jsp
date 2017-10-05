@@ -30,6 +30,7 @@
     <jsp:attribute name="rodape">
 
         <script src="${ctx}/resources/js/servicos/form.js"></script>
+        <script src="${ctx}/resources/js/servicos/saveAjax.js"></script>
         <script src="${ctx}/resources/js/ConverterObjetoParaVRaptor.js"></script>
         <script src="${ctx}/resources/plugins/jquerySteps/jquery.steps.min.js"></script>
         <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"></script>
@@ -51,8 +52,9 @@
                 </div>
             </div>
             </div>
+            <input id="urlSalvar" type="hidden" value="${linkTo[ServicosController].salvar}"/>
+            <form>
             <div class="panel-content" style="min-height: 350px;">
-            <form role="form">
                 <div class="setup-content" id="step-1">
                     <div class="form-group col-md-4">
                         <label for="titulo-servico">Título</label>
@@ -62,8 +64,12 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="status-servico">Status</label>
-                        <input type="text" class="form-control" id="status-servico" placeholder="Status"
-                               name="servico.descricao"/>
+                        <select type="text" class="form-control" id="status-servico" placeholder="Status"
+                               name="servico.statusServico">
+                            <c:forEach items="${status}" var="s">
+                                <option value="${s.valor}" selected="">${s.chave}</option>
+                            </c:forEach>
+                        </select>
                     </div>
 
                     <div class="form-group col-md-4">
@@ -103,41 +109,39 @@
                         <div class="form-group col-md-3">
                             <label for="titulo-tarefa">Título</label>
                             <input type="text" class="form-control" id="titulo-tarefa"
-                                   placeholder="Título" name="servico.setor.nome"/>
+                                   placeholder="Título" />
                         </div>
                         <div class="form-group col-md-3">
                             <label for="tecnico-tarefa">Técnico</label>
                             <input type="text" class="form-control" id="tecnico-tarefa"
-                                   placeholder="Técnico" name="servico.setor.nome"/>
+                                   placeholder="Técnico" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="prazo-tarefa">Prazo</label>
-                            <input type="text" class="form-control datePicker" id="prazo-tarefa"
-                                   placeholder="Data" name="servico.setor.nome"/>
+                            <input type="text" class="form-control datePicker" id="prazo-tarefa" name="tarefa.prazo"
+                                   placeholder="Data" />
                         </div>
                         <div class="form-group col-md-4">
                             <label for="descricao-tarefa">Descricao</label>
-                            <textarea class="form-control" id="descricao-tarefa" row="1"
-                                      name="servico.setor.nome"></textarea>
+                            <textarea class="form-control" id="descricao-tarefa" row="1" name="tarefa.descricao"
+                                      ></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="hidden" name="tarefa.id" value="${tarefa.id}" />
+                            <a id="btnAdicionar" class="btn btn-primary" href="javascript:void(0)" >Adicionar</a>
                         </div>
                     </div>
                 </div>
-                <div class="row setup-content" id="step-3">
-                    <div class="col-xs-12">
-                        <div class="col-md-12">
-                            <h3> Step 3</h3>
-                            <button class="btn btn-success pull-right" type="submit">Finish!</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+
             </div>
             <div class="panel-footer">
                 <button id="anterior" class="btn btn-primary pull-left" type="button">Anterior</button>
                 <button id="proximo" class="btn btn-primary pull-right" type="button" >Próxima</button>
-            <button id="salvar" class="btn btn-success pull-right" type="submit">Salvar</button>
+                <input type="hidden" name="servico.id" value="${servico.id}" />
+                <a  id="btnSalvarServico" type="button" class="btn btn-success pull-right" href="#" >Salvar</a>
                 <div class="clearfix"></div>
             </div>
+            </form>
         </div>
     </jsp:body>
 </tags:layout>

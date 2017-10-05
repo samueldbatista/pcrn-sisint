@@ -163,6 +163,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-java8</artifactId>
+			<version>4.0.0.Final</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
@@ -180,6 +186,17 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgument>-parameters</compilerArgument>
+					<testCompilerArgument>-parameters</testCompilerArgument>
 				</configuration>
 			</plugin>
 			<plugin>
