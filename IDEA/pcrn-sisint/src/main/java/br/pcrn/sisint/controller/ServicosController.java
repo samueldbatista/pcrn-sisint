@@ -9,6 +9,7 @@ import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.ServicoDao;
 import br.pcrn.sisint.dominio.Servico;
 import br.pcrn.sisint.dominio.StatusServico;
+import br.pcrn.sisint.dominio.StatusTarefa;
 import br.pcrn.sisint.dominio.Usuario;
 import br.pcrn.sisint.util.OpcaoSelect;
 
@@ -34,7 +35,9 @@ public class ServicosController {
     }
 
     public void form() {
+
         result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
+        result.include("statusTarefa", OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
     }
 
     @Post("/servicos")

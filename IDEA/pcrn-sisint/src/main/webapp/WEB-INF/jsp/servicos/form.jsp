@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" uri="tagSisInt" %>
-<%@ taglib prefix="td" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <tags:layout>
 
@@ -66,9 +66,11 @@
                         <label for="status-servico">Status</label>
                         <select type="text" class="form-control" id="status-servico" placeholder="Status"
                                name="servico.statusServico">
+                            <option value=""></option>
                             <c:forEach items="${status}" var="s">
-                                <option value="${s.valor}" selected="">${s.chave}</option>
+                                <option value="${s.valor}">${s.chave}</option>
                             </c:forEach>
+
                         </select>
                     </div>
 
@@ -107,19 +109,24 @@
                     </div>
                     <div id="registro-tarefas">
                         <div class="form-group col-md-3">
-                            <label for="titulo-tarefa">Título</label>
-                            <input type="text" class="form-control" id="titulo-tarefa"
-                                   placeholder="Título" />
-                        </div>
-                        <div class="form-group col-md-3">
                             <label for="tecnico-tarefa">Técnico</label>
-                            <input type="text" class="form-control" id="tecnico-tarefa"
+                            <input type="text" class="form-control" id="tecnico-tarefa" name="tarefa.tecnico"
                                    placeholder="Técnico" />
                         </div>
                         <div class="form-group col-md-2">
                             <label for="prazo-tarefa">Prazo</label>
                             <input type="text" class="form-control datePicker" id="prazo-tarefa" name="tarefa.prazo"
                                    placeholder="Data" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="status-tarefa">Status</label>
+                            <select type="text" class="form-control" id="status-tarefa" placeholder="Status"
+                                    name="tarefa.statusTarefa">
+                                <option value=""></option>
+                                <c:forEach items="${statusTarefa}" var="s">
+                                    <option value="${s.valor}">${s.chave}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="descricao-tarefa">Descricao</label>

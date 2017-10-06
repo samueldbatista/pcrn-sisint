@@ -7,28 +7,26 @@ $(function () {
 
     btnSalvarTarefas.click(function(evento) {
 
-        var titulo = $("input[name = 'tarefa.titulo']");
+        var statusTarefa = $("input[name = 'tarefa.statusTarefa']");
         var descricao = $("textarea[name = 'tarefa.descricao']");
         var prazo = $("input[name = 'tarefa.prazo']");
         var tecnico = $("input[name = 'tarefa.tecnico']");
-        //console.log($(titulo).val());
 
         var obj = {};
+        obj.tecnico = tecnico.val();
+        obj.statusTarefa = statusTarefa.val();
         obj.descricao = descricao.val();
         obj.prazo = prazo.val();
 
-
         tarefas.push(obj);
-        console.log(tarefas);
-        console.log(obj);
-
         var data = $.ConverterObjetoParaVraptor("tarefa", obj);
 
-        console.log(data);
         var url = $("#urlSalvar").val();
-        console.log("Url: ", url);
-        titulo.empty();
 
+        statusTarefa.val('');
+        descricao.val('');
+        prazo.val('');
+        tecnico.val('');
     });
 
     btnSalvarServico.on('click',function(evento) {
@@ -40,18 +38,21 @@ $(function () {
         var statusServico = $("select[name='servico.statusServico']");
 
         // console.log(titulo.val() + dataAbertura.val() + dataFechamento.val() + descricao.val());
-
-
+        var dateteste =  moment.utc(dataAbertura.val());
+        var obj = dateteste.toISOString();
         var objeto = {};
         objeto.titulo = titulo.val();
         objeto.descricao = descricao.val();
         objeto.tarefas = tarefas;
-        objeto.dataFechamento = dataFechamento.val();
-        objeto.dataAbertura = dataAbertura.val();
+        objeto.dataFechamento = obj;
+        objeto.dataAbertura = obj;
         objeto.statusServico = statusServico.val();
         // console.log(objeto.statusServico)
-        console.log(moment.parseZone(dataAbertura, "MM-DD-YYYY"));
-        var dateteste =  moment.utc(dataAbertura.val());
+
+        console.log(moment.locale());
+
+
+
         var servico = $.ConverterObjetoParaVraptor("servico", objeto);
 
         console.log("Teste form" + objeto);
