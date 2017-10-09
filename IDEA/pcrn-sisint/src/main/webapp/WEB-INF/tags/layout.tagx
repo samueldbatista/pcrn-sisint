@@ -99,24 +99,24 @@
                     <li style="padding: 70px 0 0;">
                         <a href="${linkTo[ServicosController].lista}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"><c:out value=""/></i>Serviços</a>
                     </li>
-                    <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"><c:out value=""/></i>Profile</a>
-                    </li>
-                    <li>
-                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"><c:out value=""/></i>Basic Table</a>
-                    </li>
-                    <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"><c:out value=""/></i>Icons</a>
-                    </li>
-                    <li>
-                        <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"><c:out value=""/></i>Google Map</a>
-                    </li>
-                    <li>
-                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"><c:out value=""/></i>Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"><c:out value=""/></i>Error 404</a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"><c:out value=""/></i>Profile</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"><c:out value=""/></i>Basic Table</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"><c:out value=""/></i>Icons</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"><c:out value=""/></i>Google Map</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"><c:out value=""/></i>Blank Page</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"><c:out value=""/></i>Error 404</a>-->
+                    <!--</li>-->
                 </ul>
             </div>
         </div>

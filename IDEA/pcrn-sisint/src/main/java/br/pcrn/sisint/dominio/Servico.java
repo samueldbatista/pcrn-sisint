@@ -1,7 +1,7 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -17,9 +17,9 @@ public class Servico {
     @Column(columnDefinition = "text")
     private String titulo;
 
-    private LocalDateTime dataAbertura;
+    private LocalDate dataAbertura;
 
-    private LocalDateTime dataFechamento;
+    private LocalDate dataFechamento;
 
     @Column(columnDefinition = "text")
     private String descricao;
@@ -51,19 +51,19 @@ public class Servico {
         this.id = id;
     }
 
-    public LocalDateTime getDataAbertura() {
+    public LocalDate getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(LocalDateTime dataAbertura) {
+    public void setDataAbertura(LocalDate dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public LocalDateTime getDataFechamento() {
+    public LocalDate getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(LocalDateTime dataFechamento) {
+    public void setDataFechamento(LocalDate dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
