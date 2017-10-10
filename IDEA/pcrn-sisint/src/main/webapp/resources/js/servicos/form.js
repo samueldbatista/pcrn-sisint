@@ -100,7 +100,7 @@ $(document).ready(function () {
     $('div.setup-panel div a.btn-primary').trigger('click');
 
     $(".datePicker").datepicker({
-        format: "yyyy/mm/dd"
+        format: "dd/mm/yyyy"
     });
 
 });

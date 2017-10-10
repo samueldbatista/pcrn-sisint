@@ -52,4 +52,12 @@ public class ServicosController {
         List<Servico> servicos = this.servicoDao.listarServicos();
         result.include("servicos", servicos);
     }
+
+    public void editar(Long id){
+        Servico  servico = this.servicoDao.BuscarPorId(id);
+        result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
+        result.include("statusTarefa",OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
+        result.include(servico);
+        result.of(this).form();
+    }
 }

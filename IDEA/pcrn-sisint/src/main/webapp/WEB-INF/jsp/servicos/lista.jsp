@@ -9,13 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tags" uri="tagSisInt" %>
 <%@ taglib prefix="td" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
+
 <!DOCTYPE html>
-<tags:layout>
+<tags:teste>
     <jsp:attribute name="cabecalho">
 
     </jsp:attribute>
     <jsp:attribute name="rodape">
-
+        <script src="${ctx}/resources/js/servicos/lista.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -31,21 +33,28 @@
                         <tr>
                             <th>Titulo</th>
                             <th>Status</th>
+                            <th>Data de Abertura</th>
                             <th>Data de Fechamento</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${servicos}" var="servico">
                         <tr>
                             <td>${servico.titulo}</td>
-                            <td>${servico.statusServico.chave}</td>
+                            <td><span class="label">${servico.statusServico.chave}</span></td>
+                            <td>${servico.dataAbertura}</td>
                             <td>${servico.dataFechamento}</td>
+                            <td><a href="#"><i class="fa fa-eye" aria-hidden="false"></i></a>
+                                <a href="${linkTo[ServicosController].editar}?id=${servico.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-trash"></i></a></td>
                         </tr>
                         </c:forEach>
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </jsp:body>
-</tags:layout>
+</tags:teste>

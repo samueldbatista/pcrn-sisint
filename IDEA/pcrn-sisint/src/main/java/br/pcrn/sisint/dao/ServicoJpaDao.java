@@ -18,22 +18,8 @@ public class ServicoJpaDao implements ServicoDao {
 
     @Override
     public void salvar(Servico servico) {
-        this.manager.persist(servico);
+        this.manager.merge(servico);
     }
-
-//    private void referenciarServicos(Servico servico){
-//        List<Tarefa> tarefas = servico.getTarefas();
-//
-//        if(tarefas != null){
-//            for (Tarefa t: tarefas) {
-//                if(t.getServico() !=  null) {
-//                    t.setServico(null);
-//                }
-//                t.setServico(servico);
-//            }
-//
-//        }
-//    }
 
     @Override
     public List<Servico> listarServicos() {
@@ -41,5 +27,13 @@ public class ServicoJpaDao implements ServicoDao {
 
 
         return query.getResultList();
+    }
+
+    @Override
+    public Servico BuscarPorId(Long id) {
+        Query query = manager.createQuery("select s from Servico s where s.id = :id");
+
+        query.setParameter("id", id);
+        return (Servico) query.getSingleResult();
     }
 }

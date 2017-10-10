@@ -18,3 +18,8 @@
 .card-header:first-child {
     border-radius: 0px;
 }
+
+.panel{
+    border-radius: 0px;
+    box-shadow: 5px 5px 5px #888888;
+}

@@ -38,7 +38,9 @@ $(function () {
         var statusServico = $("select[name='servico.statusServico']");
 
         // console.log(titulo.val() + dataAbertura.val() + dataFechamento.val() + descricao.val());
-        var dateteste =  moment.utc(dataAbertura.val());
+        // var dateteste =  moment.utc(dataAbertura.val());
+        var obj = moment(dataAbertura.val(), 'DD/MM/YYYY').format('YYYY/MM/DD')
+        var dateteste =  moment.utc(obj);
         var obj = dateteste.toISOString();
         var objeto = {};
         objeto.titulo = titulo.val();

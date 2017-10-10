@@ -1,11 +1,8 @@
 package br.pcrn.sisint.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Created by samue on 08/09/2017.
@@ -16,12 +13,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String nome;
 
-//    private LocalDateTime dataCadastro;
+    private LocalDate dataCadastro;
 
-//    @Enumerated(EnumType.STRING)
-//    private TipoUsuario tipoUsuario;
+    @Enumerated(EnumType.STRING)
+    private TipoUsuario tipoUsuario;
 
     public Long getId() {
         return id;
@@ -38,19 +36,20 @@ public class Usuario {
         this.nome = nome;
     }
 
-//    public LocalDateTime getDataCadastro() {
-//        return dataCadastro;
-//    }
-//
-//    public void setDataCadastro(LocalDateTime dataCadastro) {
-//        this.dataCadastro = dataCadastro;
-//    }
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
 
-//    public TipoUsuario getTipoUsuario() {
-//        return tipoUsuario;
-//    }
-//
-//    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-//        this.tipoUsuario = tipoUsuario;
-//    }
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
 }
