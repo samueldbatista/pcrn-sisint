@@ -16,6 +16,14 @@ public class Usuario {
 
     private String nome;
 
+    private String login;
+
+    private String email;
+
+    private String telefone;
+
+    private String senha;
+
     private LocalDate dataCadastro;
 
     @Enumerated(EnumType.STRING)
@@ -52,4 +60,35 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

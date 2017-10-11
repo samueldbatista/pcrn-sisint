@@ -6,9 +6,12 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.UsuarioDAO;
+import br.pcrn.sisint.dominio.TipoUsuario;
 import br.pcrn.sisint.dominio.Usuario;
+import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 
 /**
  * Created by samue on 09/09/2017.
@@ -33,12 +36,13 @@ public class UsuariosController {
     }
 
     public void form(){
-
+        this.result.include("tipoUsuario", OpcaoSelect.toListaOpcoes(TipoUsuario.values()));
     }
 
     @Post("/usuarios")
     @Transacional
     public void salvar(Usuario usuario){
+        usuario.setDataCadastro(LocalDate.now());
         this.usuarioDAO.salvar(usuario);
         result.of(this).form();
     }

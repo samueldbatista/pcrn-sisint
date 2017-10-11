@@ -6,7 +6,7 @@ import br.pcrn.sisint.conversor.ConvertivelOpcaoSelect;
  * Created by samue on 08/09/2017.
  */
 public enum TipoUsuario implements ConvertivelOpcaoSelect {
-    CLIENTE("Cliente"), ADMINISTRADOR("Administrador"), TECNICO("Técnico");
+    CLIENTE("Cliente"), TECNICO("Técnico"), ADMINISTRADOR("Administrador");
 
     private String chave;
 
