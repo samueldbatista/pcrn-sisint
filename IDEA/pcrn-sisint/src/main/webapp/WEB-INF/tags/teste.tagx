@@ -36,6 +36,7 @@
     </head>
 
     <body style="background-color: rgba(144,159,166,0.71)">
+
     <nav class="navbar navbar-default" style="border-radius: 0px; box-shadow: 0px 1px 1px #888888;">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -52,6 +53,14 @@
     </nav>
 
     <div class="container" style="width: 90%;">
+        <ul class="errors">
+            <c:forEach items="${errors}" var="erro">
+                <li>
+                    ${erro.category}
+                    ${erro.message}
+                </li>
+            </c:forEach>
+        </ul>
         <jsp:doBody/>
     </div>
 

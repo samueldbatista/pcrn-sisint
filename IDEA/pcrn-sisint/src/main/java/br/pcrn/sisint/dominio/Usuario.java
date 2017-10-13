@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
@@ -28,6 +28,8 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
+
+//    private boolean deletado;
 
     public Long getId() {
         return id;
@@ -91,4 +93,12 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+//    public boolean isDeletado() {
+//        return deletado;
+//    }
+//
+//    public void setDeletado(boolean deletado) {
+//        this.deletado = deletado;
+//    }
 }

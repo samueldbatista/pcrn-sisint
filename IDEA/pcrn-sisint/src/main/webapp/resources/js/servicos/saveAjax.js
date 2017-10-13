@@ -73,7 +73,7 @@ $(function () {
 
         }).done(function(data) {
             /* executada em caso de sucesso*/
-            window.location.href = "http://localhost:8080/servicos/lista"
+            // window.location.href = "http://localhost:8080/servicos/lista"
 
         }).fail(function(jqXHR, textStatus, errorThrown) {
 

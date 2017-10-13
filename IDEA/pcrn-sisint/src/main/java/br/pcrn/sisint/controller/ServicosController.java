@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.DefaultValidator;
+import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.ServicoDao;
@@ -21,17 +22,20 @@ public class ServicosController {
 
     private Result result;
     private ServicoDao servicoDao;
+    private Validator validador;
+
     /**
      * @deprecated CDI eyes only
      */
     protected ServicosController() {
-        this(null, null);
+        this(null, null, null);
     }
 
     @Inject
-    public ServicosController(Result result, ServicoDao servicoDao) {
+    public ServicosController(Result result, ServicoDao servicoDao, Validator validador) {
         this.result = result;
         this.servicoDao = servicoDao;
+        this.validador =  validador;
     }
 
     public void form() {
@@ -43,8 +47,14 @@ public class ServicosController {
     @Post("/servicos")
     @Transacional
     public void salvar(Servico servico) {
+
+        if(servico.getTitulo() == null){
+            validador.add( new SimpleMessage("titulo", "Titulo é obrigatório"));
+        }
+
+        validador.onErrorRedirectTo(this).form();
         this.servicoDao.salvar(servico);
-        this.result.redirectTo("/servicos/lista");
+        this.result.redirectTo((this)).lista();
     }
 
     public void lista() {

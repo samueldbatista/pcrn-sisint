@@ -4,6 +4,7 @@ import br.pcrn.sisint.dominio.Usuario;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  * Created by samue on 08/09/2017.
@@ -35,12 +36,20 @@ public class UsuarioJpaDAO implements UsuarioDAO {
     }
 
     @Override
-    public void buscar() {
+    public void buscarPorId() {
 
     }
 
     @Override
     public void remover() {
 
+    }
+
+    @Override
+    public Usuario buscarPorLogin(String login) {
+        Query query = this.manager.createQuery("SELECT p from Usuario p where p.login = :login");
+        query.setParameter("login",login);
+        Usuario usuario = (Usuario) query.getSingleResult();
+        return usuario;
     }
 }

@@ -8,6 +8,7 @@ import br.pcrn.sisint.dominio.Usuario;
 public interface UsuarioDAO {
 
     public void salvar(Usuario usuario);
-    public void buscar();
+    public void buscarPorId();
+    public Usuario buscarPorLogin(String login);
     public void remover();
 }

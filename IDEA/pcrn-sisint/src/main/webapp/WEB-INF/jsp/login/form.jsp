@@ -28,14 +28,14 @@
             <img src="${ctx}/resources/imagens/sisint-logo.png" style="margin-left: 40px;"/>
         </div>
         <div class="panel-body" style="padding-bottom: 75px;">
-            <form>
+            <form method="post" action="${linkTo[LoginController].login}">
                 <div class="input-group" style="margin-bottom: 8px;">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="email" type="text" class="form-control" name="email" placeholder="Login">
+                    <input id="login-usuario" type="text" class="form-control" name="usuario.login" placeholder="Login">
                 </div>
                 <div class="input-group" style="margin-bottom: 8px;">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                    <input id="senha-usuario" type="password" class="form-control" name="usuario.senha" placeholder="Senha">
                 </div>
 
                 <button class="btn btn-primary col-md-3 col-md-offset-9">Entrar</button>

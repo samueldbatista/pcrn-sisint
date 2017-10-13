@@ -61,19 +61,19 @@
                             <div class="col-md-6">
                                 <div class="form-group col-md-6">
                                     <label for="titulo-servico">Título</label>
-                                    <input type="text" class="form-control input-sm" id="titulo-servico"
+                                    <input type="text" class="form-control input-sm" id="titulo-servico" required="true"
                                            value="${servico.titulo}"
                                            placeholder="Titulo do serviço"
                                            name="servico.titulo"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="tecnico-servico">Ténico Responsável</label>
-                                    <input type="text" class="form-control" id="tecnico-servico"
+                                    <input type="text" class="form-control" id="tecnico-servico" required="true"
                                            placeholder="Técnico responsável"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="status-servico">Status</label>
-                                    <select type="text" class="form-control" id="status-servico" placeholder="Status"
+                                    <select type="text" class="form-control" id="status-servico" placeholder="Status" required="true"
                                             name="servico.statusServico">
                                         <option value=""></option>
                                         <c:forEach items="${status}" var="s">
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="prioridade-servico">Prioridade</label>
-                                    <select type="text" class="form-control" id="prioridade-servico"
+                                    <select type="text" class="form-control" id="prioridade-servico" required="true"
                                             placeholder="Prioridade"
                                             name="servico.prioridade">
                                         <option value=""></option>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="data-fechamento-servico">Data de Finalização</label>
-                                    <input type="text" class="form-control datePicker" id="data-fechamento-servico"
+                                    <input type="text" class="form-control datePicker" id="data-fechamento-servico" required="true"
                                            value="${servico.dataFechamento}"
                                            placeholder="Data de finalização" name="servico.dataFechamento"/>
                                 </div>
@@ -120,7 +120,7 @@
                             <div class="col-md-12">
                                 <div class="form-group col-md-12">
                                     <label for="descricao">Descrição:</label>
-                                    <textarea class="form-control" name="servico.descricao" rows="5"
+                                    <textarea class="form-control" name="servico.descricao" rows="5" required="true"
                                               id="descricao">${servico.descricao}</textarea>
                                 </div>
                             </div>
