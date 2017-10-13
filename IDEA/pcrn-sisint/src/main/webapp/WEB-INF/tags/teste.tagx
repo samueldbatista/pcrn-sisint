@@ -39,7 +39,9 @@
     <nav class="navbar navbar-default" style="border-radius: 0px; box-shadow: 0px 1px 1px #888888;">
         <div class="container-fluid">
             <div class="navbar-header">
+                <a href="${linkTo[ServicosController].lista}">
                 <img src="${ctx}/resources/imagens/sisint-logo-header.png" style="margin-left: -5px; margin-right: 5px; margin-top: 3px;"></img>
+                </a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="${linkTo[ServicosController].lista}">Serviços</a></li>
