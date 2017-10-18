@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
 import br.pcrn.sisint.controller.LoginController;
+import br.pcrn.sisint.controller.ServicosController;
 import br.pcrn.sisint.dominio.UsuarioLogado;
 
 import javax.inject.Inject;
@@ -28,6 +29,7 @@ public class AutenticacaoInterceptor {
     @AroundCall
     public void autentica(SimpleInterceptorStack stack){
         if(usuario.isLogado()){
+            resultado.include("usuarioLogado", usuario);
             stack.next();
         } else {
                 resultado.redirectTo(LoginController.class).form();

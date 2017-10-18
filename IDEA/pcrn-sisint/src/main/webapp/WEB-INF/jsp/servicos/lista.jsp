@@ -23,7 +23,7 @@
     <jsp:body>
         <div class="panel">
             <div class="panel-heading">
-                <div class="panel-title">Gerenciamento de serviços</div>
+                <div class="panel-title">Gerenciamento de serviços ${usuarioLogado.usuario.login}</div>
             </div>
             <div class="panel-body" style="padding-top: 0px;">
                 <a class="btn btn-info" style="margin-bottom: 16px;" href="${linkTo[ServicosController].form}">Cadastrar</a>

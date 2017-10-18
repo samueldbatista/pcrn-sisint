@@ -43,6 +43,7 @@ public class UsuariosController {
     @Transacional
     public void salvar(Usuario usuario){
         usuario.setDataCadastro(LocalDate.now());
+        usuario.setDeletado(false);
         this.usuarioDAO.salvar(usuario);
         result.of(this).form();
     }

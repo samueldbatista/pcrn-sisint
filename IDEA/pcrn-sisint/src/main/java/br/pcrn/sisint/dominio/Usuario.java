@@ -1,6 +1,7 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nome;
@@ -29,7 +30,7 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
 
-//    private boolean deletado;
+    private boolean deletado;
 
     public Long getId() {
         return id;
@@ -94,11 +95,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-//    public boolean isDeletado() {
-//        return deletado;
-//    }
-//
-//    public void setDeletado(boolean deletado) {
-//        this.deletado = deletado;
-//    }
+    public boolean isDeletado() {
+        return deletado;
+    }
+
+    public void setDeletado(boolean deletado) {
+        this.deletado = deletado;
+    }
 }

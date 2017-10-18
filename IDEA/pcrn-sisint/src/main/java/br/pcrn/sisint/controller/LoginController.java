@@ -27,6 +27,8 @@ public class LoginController {
     @Post("/login")
     public void login(Usuario usuario){
         Usuario usuarioLogin = usuarioDao.buscarPorLogin(usuario.getLogin());
+        usuarioLogado.setUsuario(usuarioLogin);
+        resultado.redirectTo(ServicosController.class).form();
     }
 
     @Get("/login")

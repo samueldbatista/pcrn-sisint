@@ -20,7 +20,7 @@
         <meta name="description" content=""/>
         <meta name="author" content=""/>
         <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png"/>
-        <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+        <title>Sistema de Integração - SISINT</title>
         <!-- Bootstrap Core CSS -->
         <link href="${ctx}/resources/template-admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="${ctx}/resources/css/geral.css" rel="stylesheet"/>
@@ -48,6 +48,17 @@
                 <li class="active"><a href="${linkTo[ServicosController].lista}">Serviços</a></li>
                 <li><a href="#">Tarefas</a></li>
                 <li><a href="${linkTo[UsuariosController].form}">Usuários</a></li>
+                <!--<li style="float: left;"><a href="#">teste</a></li>-->
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">${usuarioLogado.usuario.login}</button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul></div>
             </ul>
         </div>
     </nav>

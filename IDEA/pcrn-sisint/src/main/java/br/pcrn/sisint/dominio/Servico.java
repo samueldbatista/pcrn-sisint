@@ -26,9 +26,9 @@ public class Servico {
 
     private boolean deletado;
 
-//    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
+    private Usuario tecnico;
 
-//    private Usuario usuarioResponsavel;
     @Enumerated(EnumType.STRING)
     private StatusServico statusServico;
 
@@ -91,13 +91,13 @@ public class Servico {
         this.titulo = titulo;
     }
 
-    //    public Usuario getUsuarioResponsavel() {
-//        return usuarioResponsavel;
-//    }
-//
-//    public void setUsuarioResponsavel(Usuario usuarioResponsavel) {
-//        this.usuarioResponsavel = usuarioResponsavel;
-//   }
+    public Usuario getTecnico() {
+        return tecnico;
+    }
+
+    public void setTecnico(Usuario tecnico) {
+        this.tecnico = tecnico;
+    }
 
     public StatusServico getStatusServico() {
         return statusServico;

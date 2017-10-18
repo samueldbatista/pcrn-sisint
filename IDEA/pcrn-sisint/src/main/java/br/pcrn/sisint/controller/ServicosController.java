@@ -8,10 +8,12 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.ServicoDao;
+import br.pcrn.sisint.dao.UsuarioDAO;
 import br.pcrn.sisint.dominio.Servico;
 import br.pcrn.sisint.dominio.StatusServico;
 import br.pcrn.sisint.dominio.StatusTarefa;
 import br.pcrn.sisint.dominio.Usuario;
+import br.pcrn.sisint.negocio.ServicosNegocio;
 import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
@@ -23,23 +25,28 @@ public class ServicosController {
     private Result result;
     private ServicoDao servicoDao;
     private Validator validador;
+    private UsuarioDAO usuarioDAO;
+    private ServicosNegocio servicosNegocio;
 
     /**
      * @deprecated CDI eyes only
      */
     protected ServicosController() {
-        this(null, null, null);
+        this(null,null, null, null, null);
     }
 
     @Inject
-    public ServicosController(Result result, ServicoDao servicoDao, Validator validador) {
+    public ServicosController(Result result, ServicoDao servicoDao, Validator validador, UsuarioDAO usuarioDAO,
+                              ServicosNegocio servicosNegocio) {
         this.result = result;
         this.servicoDao = servicoDao;
         this.validador =  validador;
+        this.usuarioDAO= usuarioDAO;
+        this.servicosNegocio = servicosNegocio;
     }
 
     public void form() {
-
+        result.include("usuarios", servicosNegocio.geraListaOpcoesUsuarios());
         result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
         result.include("statusTarefa", OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
     }
