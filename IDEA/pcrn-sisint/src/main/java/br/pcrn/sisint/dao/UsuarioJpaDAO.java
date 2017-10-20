@@ -4,6 +4,7 @@ import br.pcrn.sisint.dominio.Usuario;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -55,9 +56,14 @@ public class UsuarioJpaDAO implements UsuarioDAO {
 
     @Override
     public Usuario buscarPorLogin(String login) {
-        Query query = this.manager.createQuery("SELECT p from Usuario p where p.login = :login");
-        query.setParameter("login",login);
-        Usuario usuario = (Usuario) query.getSingleResult();
-        return usuario;
+        try {
+            Query query = this.manager.createQuery("SELECT p from Usuario p where p.login = :login");
+            query.setParameter("login",login);
+            return (Usuario) query.getSingleResult();
+
+        }catch (NoResultException e){
+            return null;
+        }
+
     }
 }

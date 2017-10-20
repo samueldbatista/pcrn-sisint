@@ -2,102 +2,96 @@
  * Created by samue on 15/09/2017.
  */
 
-$(document).ready(function () {
+$(function () {
 
-    var navListItems = $('div.setup-panel div a'),
-        allWells = $('.setup-content'),
-        allNextBtn = $('.nextBtn'),
-        allPreviousBtn = $('previousBtn');
-
-    var btnProximo = $('#proximo');
-    var btnAnterior = $('#anterior');
-    var btnSalvar = $('#salvar');
-    btnAnterior.hide();
-    btnSalvar.hide();
-    console.log(btnAnterior);
-    var step1 = $('.panel-content').find('#step-1');
-    var step2 = $('.panel-content').find('#step-2');
-
+    console.log('Carregou com sucesso!');
+    var tarefas = [];
+    var btnSalvarTarefas = $('#btnAdicionar');
     var btnServico = $('#btnServico');
-    var btnTarefa = $('#btnTarefa');
 
-    allWells.hide();
-    step1.show();
+    btnSalvarTarefas.click(function(evento) {
 
-    navListItems.click(function (e) {
-        e.preventDefault();
-        var $target = $($(this).attr('href')),
-            $item = $(this),
-            $idTela = $($(this).attr('id'));
+        var statusTarefa = $("input[name = 'tarefa.statusTarefa']");
+        var descricao = $("textarea[name = 'tarefa.descricao']");
+        var prazo = $("input[name = 'tarefa.prazo']");
+        var tecnico = $("input[name = 'tarefa.tecnico']");
 
-        if (!$item.hasClass('btn-primary')) {
-            navListItems.removeClass('btn-primary').addClass('btn-default');
-            $item.addClass('btn-primary');
-            allWells.hide();
-            $target.show();
-            $target.find('input:eq(0)').focus();
-        }
+        var obj = {};
+        obj.tecnico = tecnico.val();
+        obj.statusTarefa = statusTarefa.val();
+        obj.descricao = descricao.val();
+        obj.prazo = prazo.val();
+
+        tarefas.push(obj);
+        var data = $.ConverterObjetoParaVraptor("tarefa", obj);
+
+        var url = $("#urlSalvar").val();
+
+        statusTarefa.val('');
+        descricao.val('');
+        prazo.val('');
+        tecnico.val('');
     });
 
-    btnTarefa.click(function (e) {
-        e.preventDefault();
-        console.log("BTN ANTERIOR");
-        btnAnterior.show();
-        btnProximo.hide();
-        btnSalvar.show();
+    btnServico.click(function(evento) {
+        evento.preventDefault();
+        console.log("TESTESTESTE")
+        var titulo = $("input[name='servico.titulo']");
+        var dataFechamento = $("input[name='servico.dataFechamento']");
+        var pendencia = $("input[name='servico.pendencia']");
+        var descricao = $("textarea[name='servico.descricao']");
+        var statusServico = $("select[name='servico.statusServico']");
+        var prioridade = $("select[name='servico.prioridade']");
+        var tecnico = $("select[name='servico.tecnico']");
+        var setor = $("select[name='servico.setor']");
+
+        var obj = moment(dataFechamento.val(), 'DD/MM/YYYY').format('YYYY/MM/DD')
+        var dateteste =  moment.utc(obj);
+        var obj = dateteste.toISOString();
+        var tecnicoResp = {};
+        tecnicoResp.id = tecnico.val();
+        var setorSolicitante = {};
+        setorSolicitante.id = setor.val();
+
+
+
+        console.log("ID DO SETOR: " + setor.val());
+
+        var objeto = {};
+        objeto.titulo = titulo.val();
+        objeto.dataFechamento = obj;
+        objeto.pendencia = pendencia.val();
+        objeto.descricao = descricao.val();
+        objeto.statusServico = statusServico.val();
+        objeto.prioridade = prioridade.val();
+        objeto.tecnico = tecnicoResp;
+        objeto.tarefas = tarefas;
+        objeto.setor = setorSolicitante;
+
+        var servico = $.ConverterObjetoParaVraptor("servico", objeto);
+
+        console.log("Teste form" + objeto);
+
+        var url = $("#urlSalvar").val();
+
+        data = servico;
+
+        $.ajax({
+
+            url: url,
+
+            type: 'POST',
+
+            data: data
+
+        }).done(function(data) {
+            window.location.href = "http://localhost:8080/servicos/lista"
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+
+            alert("O serviço não foi salvo!");
+
+        });
     });
-
-    btnServico.click(function (e) {
-        e.preventDefault();
-        console.log("BTN ANTERIOR");
-        btnAnterior.hide();
-        btnProximo.show();
-        btnSalvar.hide();
-    });
-
-    btnProximo.click(function (e) {
-        e.preventDefault();
-        btnServico.toggleClass('btn-primary btn-default');
-        btnTarefa.toggleClass('btn-primary btn-default');
-        console.log("BTN ANTERIOR");
-        step1.hide();
-        step2.show();
-        btnAnterior.show();
-        btnProximo.hide();
-        btnSalvar.show();
-    });
-
-    btnAnterior.click(function (e) {
-        e.preventDefault();
-        btnServico.toggleClass('btn-primary btn-default');
-        btnTarefa.toggleClass('btn-primary btn-default');
-        step1.show();
-        step2.hide();
-        btnAnterior.hide();
-        btnProximo.show();
-        btnSalvar.hide();
-    });
-
-    allNextBtn.click(function () {
-        var curStep = $(this).closest(".setup-content"),
-            curStepBtn = curStep.attr("id"),
-            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-            curInputs = curStep.find("input[type='text'],input[type='url']"),
-            isValid = true;
-
-        $(".form-group").removeClass("has-error");
-        for (var i = 0; i < curInputs.length; i++) {
-            if (!curInputs[i].validity.valid) {
-                isValid = false;
-                $(curInputs[i]).closest(".form-group").addClass("has-error");
-            }
-        }
-
-        if (isValid)
-            nextStepWizard.removeAttr('disabled').trigger('click');
-    });
-
-    $('div.setup-panel div a.btn-primary').trigger('click');
 
     $(".datePicker").datepicker({
         format: "dd/mm/yyyy"

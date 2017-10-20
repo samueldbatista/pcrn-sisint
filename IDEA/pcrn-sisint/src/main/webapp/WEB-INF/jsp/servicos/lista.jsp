@@ -33,7 +33,7 @@
                         <tr>
                             <th>Titulo</th>
                             <th>Status</th>
-                            <th>Data de Abertura</th>
+                            <th>Prioridade</th>
                             <th>Data de Fechamento</th>
                             <th>Ações</th>
                         </tr>
@@ -43,7 +43,7 @@
                         <tr>
                             <td>${servico.titulo}</td>
                             <td><span class="label">${servico.statusServico.chave}</span></td>
-                            <td>${servico.dataAbertura}</td>
+                            <td><span class="label">${servico.prioridade.chave}</span></td>
                             <td>${servico.dataFechamento}</td>
                             <td><a href="#"><i class="fa fa-eye" aria-hidden="false"></i></a>
                                 <a href="${linkTo[ServicosController].editar}?id=${servico.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

@@ -1,5 +1,7 @@
 package br.pcrn.sisint.dominio;
 
+import br.pcrn.sisint.util.Criptografia;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
@@ -92,7 +94,7 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        this.senha = senha;
+        this.senha = Criptografia.criptografar(senha);
     }
 
     public boolean isDeletado() {

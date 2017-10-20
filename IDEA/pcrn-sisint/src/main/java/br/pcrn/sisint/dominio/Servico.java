@@ -39,9 +39,13 @@ public class Servico {
     private List<Tarefa> tarefas;
 
     @OneToOne(fetch = FetchType.EAGER)
-    private Setor setorSolicitante;
+    private Setor setor;
 
     private String prazoFinalização;
+
+    private Prioridade prioridade;
+
+    private boolean pendencia;
 
     public Long getId() {
         return id;
@@ -123,12 +127,12 @@ public class Servico {
         this.tarefas = tarefas;
     }
 
-    public Setor getSetorSolicitante() {
-        return setorSolicitante;
+    public Setor getSetor() {
+        return setor;
     }
 
-    public void setSetorSolicitante(Setor setorSolicitante) {
-        this.setorSolicitante = setorSolicitante;
+    public void setSetor(Setor setor) {
+        this.setor = setor;
     }
 
     public String getPrazoFinalização() {
@@ -137,6 +141,22 @@ public class Servico {
 
     public void setPrazoFinalização(String prazoFinalização) {
         this.prazoFinalização = prazoFinalização;
+    }
+
+    public Prioridade getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(Prioridade prioridade) {
+        this.prioridade = prioridade;
+    }
+
+    public boolean isPendencia() {
+        return pendencia;
+    }
+
+    public void setPendencia(boolean pendencia) {
+        this.pendencia = pendencia;
     }
 
     @Override
@@ -151,7 +171,7 @@ public class Servico {
                 ", statusServico=" + statusServico +
                 ", codigoServico=" + codigoServico +
                 ", tarefas=" + tarefas +
-                ", setorSolicitante=" + setorSolicitante +
+                ", setor=" + setor +
                 ", prazoFinalização=" + prazoFinalização +
                 '}';
     }
@@ -167,7 +187,7 @@ public class Servico {
         result = 31 * result + (statusServico != null ? statusServico.hashCode() : 0);
         result = 31 * result + (codigoServico != null ? codigoServico.hashCode() : 0);
         result = 31 * result + (tarefas != null ? tarefas.hashCode() : 0);
-        result = 31 * result + (setorSolicitante != null ? setorSolicitante.hashCode() : 0);
+        result = 31 * result + (setor != null ? setor.hashCode() : 0);
         result = 31 * result + (prazoFinalização != null ? prazoFinalização.hashCode() : 0);
         return result;
     }

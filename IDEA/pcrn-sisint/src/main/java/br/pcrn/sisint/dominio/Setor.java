@@ -12,11 +12,11 @@ public class Setor {
     @Id
     @GeneratedValue
     private Long id;
-
+    private boolean deletado;
     private String nome;
     private String telefone1;
     private String telefone2;
-    private String informacoes;
+    private String informacao;
 
     public Long getId() {
         return id;
@@ -50,12 +50,20 @@ public class Setor {
         this.telefone2 = telefone2;
     }
 
-    public String getInformacoes() {
-        return informacoes;
+    public String getInformacao() {
+        return informacao;
     }
 
-    public void setInformacoes(String informacoes) {
-        this.informacoes = informacoes;
+    public void setInformacao(String informacao) {
+        this.informacao = informacao;
+    }
+
+    public boolean isDeletado() {
+        return deletado;
+    }
+
+    public void setDeletado(boolean deletado) {
+        this.deletado = deletado;
     }
 
     @Override
@@ -69,7 +77,7 @@ public class Setor {
         if (nome != null ? !nome.equals(setor.nome) : setor.nome != null) return false;
         if (telefone1 != null ? !telefone1.equals(setor.telefone1) : setor.telefone1 != null) return false;
         if (telefone2 != null ? !telefone2.equals(setor.telefone2) : setor.telefone2 != null) return false;
-        return informacoes != null ? informacoes.equals(setor.informacoes) : setor.informacoes == null;
+        return informacao != null ? informacao.equals(setor.informacao) : setor.informacao == null;
     }
 
     @Override
@@ -78,7 +86,7 @@ public class Setor {
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (telefone1 != null ? telefone1.hashCode() : 0);
         result = 31 * result + (telefone2 != null ? telefone2.hashCode() : 0);
-        result = 31 * result + (informacoes != null ? informacoes.hashCode() : 0);
+        result = 31 * result + (informacao != null ? informacao.hashCode() : 0);
         return result;
     }
 
@@ -89,7 +97,7 @@ public class Setor {
                 ", nome='" + nome + '\'' +
                 ", telefone1='" + telefone1 + '\'' +
                 ", telefone2='" + telefone2 + '\'' +
-                ", informacoes='" + informacoes + '\'' +
+                ", informacao='" + informacao + '\'' +
                 '}';
     }
 }

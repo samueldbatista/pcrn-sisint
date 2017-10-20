@@ -9,14 +9,12 @@ import br.com.caelum.vraptor.validator.Validator;
 import br.pcrn.sisint.anotacoes.Transacional;
 import br.pcrn.sisint.dao.ServicoDao;
 import br.pcrn.sisint.dao.UsuarioDAO;
-import br.pcrn.sisint.dominio.Servico;
-import br.pcrn.sisint.dominio.StatusServico;
-import br.pcrn.sisint.dominio.StatusTarefa;
-import br.pcrn.sisint.dominio.Usuario;
+import br.pcrn.sisint.dominio.*;
 import br.pcrn.sisint.negocio.ServicosNegocio;
 import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -47,21 +45,25 @@ public class ServicosController {
 
     public void form() {
         result.include("usuarios", servicosNegocio.geraListaOpcoesUsuarios());
+        result.include("setores", servicosNegocio.geraListaOpcoesSetor());
         result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
         result.include("statusTarefa", OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
+        result.include("prioridades", OpcaoSelect.toListaOpcoes(Prioridade.values()));
     }
 
     @Post("/servicos")
     @Transacional
     public void salvar(Servico servico) {
-
+        if(servico != null){
+            servico.setDataAbertura(LocalDate.now());
+        }
         if(servico.getTitulo() == null){
             validador.add( new SimpleMessage("titulo", "Titulo é obrigatório"));
         }
 
         validador.onErrorRedirectTo(this).form();
         this.servicoDao.salvar(servico);
-        this.result.redirectTo((this)).lista();
+        result.redirectTo((this)).lista();
     }
 
     public void lista() {
@@ -72,8 +74,11 @@ public class ServicosController {
 
     public void editar(Long id){
         Servico  servico = this.servicoDao.BuscarPorId(id);
+        result.include("setores", servicosNegocio.geraListaOpcoesSetor());
+        result.include("usuarios", servicosNegocio.geraListaOpcoesUsuarios());
         result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
         result.include("statusTarefa",OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
+        result.include("prioridades", OpcaoSelect.toListaOpcoes(Prioridade.values()));
         result.include(servico);
         result.of(this).form();
     }

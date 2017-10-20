@@ -5,22 +5,29 @@
 $(document).ready(function () {
     var $tabela = $(this).find('table');
     var $span =  $(this).find('span');
-    var obj = {
+    var status = {
         concluido: "Concluído",
-        andamento: ""
+        emExecucao: "Em execução",
+        cancelado: "Em execução",
+        aguardando: "Aguardando execução",
+    };
+    var prioridade = {
+        alta: "Alta",
+        media: "Média",
+        baixa: "Baixa",
     };
     $span.each(function () {
         var descricao =  $(this).text();
         console.log(descricao);
-        if(descricao == 'Concluído') {
+        if(descricao == status.concluido) {
             $(this).addClass('label-success');
             $(this).removeClass('label-info');
-        } else if(descricao == 'Em execução'){
+        } else if(descricao == status.emExecucao || descricao == prioridade.baixa){
             $(this).addClass('label-info');
             $(this).removeClass('label-success');
-        } else if(descricao == 'Cancelado'){
+        } else if(descricao == status.cancelado || descricao == prioridade.alta){
             $(this).addClass('label-danger');
-        } else if(descricao == 'Aguardando execução'){
+        } else if(descricao == status.aguardando || descricao == prioridade.media){
             $(this).addClass('label-warning');
         }
     });

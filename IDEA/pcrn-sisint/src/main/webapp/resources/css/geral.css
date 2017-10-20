@@ -1,25 +1,15 @@
-.table-line-sm {
-    line-height: 10px;
-}
-
-.card {
-    border-radius: 0px;
-}
-
-.card-header-sm {
-    padding: 0px 0px;
-}
-
-.titulo-cartao {
-    margin: 8px 8px;
-    color: white;
-}
-
-.card-header:first-child {
-    border-radius: 0px;
-}
-
 .panel{
     border-radius: 0px;
-    box-shadow: 5px 5px 5px #888888;
+    box-shadow: 2px 2px 2px #888888;
+    border-color: #eadede;
+}
+
+#cadastro-servico, #cadastro-tarefa{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.tituloCadastro{
+    border-bottom: 1px solid #3c3c3c;
+    color: #3c3c3c;
 }
