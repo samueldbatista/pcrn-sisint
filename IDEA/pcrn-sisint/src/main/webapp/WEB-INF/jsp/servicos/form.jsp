@@ -57,7 +57,12 @@
                                 <select class="form-control input-sm" id="setor-servico" name="servico.setor">
                                     <option value=""></option>
                                     <c:forEach items="${setores}" var="setor">
-                                        <option value="${setor.valor}">${setor.chave}</option>
+                                        <c:if test="${setor.valor == servico.setor.id}">
+                                            <option value="${setor.valor}" selected="true">${setor.chave}</option>
+                                        </c:if>
+                                        <c:if test="${!(setor.valor == servico.setor.id)}">
+                                            <option value="${setor.valor}">${setor.chave}</option>
+                                        </c:if>
                                     </c:forEach>
 
                                 </select>
@@ -91,7 +96,12 @@
                                 <select class="form-control input-sm" id="prioridade-servico" name="servico.prioridade">
                                     <option value=""></option>
                                     <c:forEach items="${prioridades}" var="prioridade">
-                                        <option value="${prioridade.valor}">${prioridade.chave}</option>
+                                        <c:if test="${prioridade.valor == servico.prioridade.valor}">
+                                            <option value="${prioridade.valor}" selected="true">${prioridade.chave}</option>
+                                        </c:if>
+                                        <c:if test="${!(prioridade.valor == servico.prioridade.valor)}">
+                                            <option value="${prioridade.valor}">${prioridade.chave}</option>
+                                        </c:if>
                                     </c:forEach>
 
                                 </select>
@@ -101,9 +111,13 @@
                                 <select class="form-control input-sm" id="tecnico-servico" name="servico.tecnico">
                                     <option value=""></option>
                                     <c:forEach items="${usuarios}" var="usuario">
-                                        <option value="${usuario.valor}">${usuario.chave}</option>
+                                        <c:if test="${usuario.valor == servico.tecnico.id}">
+                                            <option value="${usuario.valor}" selected="true">${usuario.chave}</option>
+                                        </c:if>
+                                        <c:if test="${!(usuario.valor == servico.tecnico.id)}">
+                                            <option value="${usuario.valor}">${usuario.chave}</option>
+                                        </c:if>
                                     </c:forEach>
-
                                 </select>
                             </div>
                             <div class="checkbox col-md-2">
