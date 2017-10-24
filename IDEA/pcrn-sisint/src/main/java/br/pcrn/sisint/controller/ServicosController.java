@@ -15,6 +15,7 @@ import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,6 +26,8 @@ public class ServicosController {
     private Validator validador;
     private UsuarioDAO usuarioDAO;
     private ServicosNegocio servicosNegocio;
+
+    private List<Tarefa> tarefas1 = new ArrayList<>();
 
     /**
      * @deprecated CDI eyes only
@@ -65,7 +68,10 @@ public class ServicosController {
         this.servicoDao.salvar(servico);
         result.redirectTo((this)).lista();
     }
-
+    public void salvarTarefa(Tarefa tarefa){
+        tarefas1.add(tarefa);
+        result.nothing();
+    }
     public void lista() {
 
         List<Servico> servicos = this.servicoDao.listarServicos();

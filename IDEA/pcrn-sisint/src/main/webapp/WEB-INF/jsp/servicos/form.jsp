@@ -41,6 +41,7 @@
             <form>
                 <div class="panel-body">
                     <input id="urlSalvar" type="hidden" value="${linkTo[ServicosController].salvar}"/>
+                    <input id="urlSalvarTarefa" type="hidden" value="${linkTo[ServicosController].salvarTarefa}"/>
                     <h4 class="tituloCadastro">Cadastro de Serviços</h4>
                     <div id="cadastro-servico">
                         <div class="row">
@@ -97,7 +98,8 @@
                                     <option value=""></option>
                                     <c:forEach items="${prioridades}" var="prioridade">
                                         <c:if test="${prioridade.valor == servico.prioridade.valor}">
-                                            <option value="${prioridade.valor}" selected="true">${prioridade.chave}</option>
+                                            <option value="${prioridade.valor}"
+                                                    selected="true">${prioridade.chave}</option>
                                         </c:if>
                                         <c:if test="${!(prioridade.valor == servico.prioridade.valor)}">
                                             <option value="${prioridade.valor}">${prioridade.chave}</option>
@@ -131,48 +133,48 @@
                             </div>
                         </div>
                     </div>
-                    <h4 class="tituloCadastro">Cadastro de Tarefas</h4>
                     <div id="cadastro-tarefa">
-                        <input type="hidden" name="tarefa.id" value="${tarefa.id}"/>
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label for="titulo-tarefa">Título</label>
-                                <input type="text" class="form-control" id="titulo-tarefa"
-                                       name="tarefa.tecnico"
-                                       placeholder="Técnico"/>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="tecnico-tarefa">Técnico</label>
-                                <input type="text" class="form-control" id="tecnico-tarefa"
-                                       name="tarefa.tecnico"
-                                       placeholder="Técnico"/>
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="prazo-tarefa">Prazo</label>
-                                <input type="text" class="form-control datePicker" id="prazo-tarefa"
-                                       name="tarefa.prazo"
-                                       placeholder="Data"/>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="status-tarefa">Status</label>
-                                <select type="text" class="form-control" id="status-tarefa" placeholder="Status"
-                                        name="tarefa.statusTarefa">
-                                    <option value=""></option>
-                                    <c:forEach items="${statusTarefa}" var="s">
-                                        <option value="${s.valor}">${s.chave}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="descricao-tarefa">Descricao</label>
-                                <textarea class="form-control" id="descricao-tarefa" row="1"
-                                          name="tarefa.descricao"
-                                ></textarea>
-                            </div>
-                        </div>
                         <div class="row" align="right">
-                            <button class="btn btn-success" type="button">Adicionar</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                                Adicionar
+                            </button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="titulo-tarefa">Título:</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" name="tarefa.descricao" class="form-control" id="titulo-tarefa" placeholder="Titulo">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="pwd">Password:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button id="btnSalvarTarefa" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="panel-footer" align="right">

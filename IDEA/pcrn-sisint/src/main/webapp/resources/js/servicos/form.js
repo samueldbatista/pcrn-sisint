@@ -6,32 +6,40 @@ $(function () {
 
     console.log('Carregou com sucesso!');
     var tarefas = [];
-    var btnSalvarTarefas = $('#btnAdicionar');
+    var btnSalvarTarefas = $('#btnt');
     var btnServico = $('#btnServico');
+    
+    $('#btnSalvarTarefa').click(function (e) {
+        e.preventDefault();
+        var titulo = $("input[name='tarefa.titulo']");
+        var tecnico = $("input[name='tarefa.tecnico']");
+        var descricao = $("input[name='tarefa.descricao']");
+        var titulo = $("input[name='tarefa.descricao']");
+        var urlTarefa = $("#urlSalvarTarefa").val();
+        var tarefa = {};
+        tarefa.descricao = titulo.val();
+        console.log(tarefa.nome);
+        // var data = tarefa;
+         var data = $.ConverterObjetoParaVraptor("tarefa",tarefa);
+        $.ajax({
 
-    btnSalvarTarefas.click(function(evento) {
+            url: urlTarefa,
 
-        var statusTarefa = $("input[name = 'tarefa.statusTarefa']");
-        var descricao = $("textarea[name = 'tarefa.descricao']");
-        var prazo = $("input[name = 'tarefa.prazo']");
-        var tecnico = $("input[name = 'tarefa.tecnico']");
+            type: 'POST',
 
-        var obj = {};
-        obj.tecnico = tecnico.val();
-        obj.statusTarefa = statusTarefa.val();
-        obj.descricao = descricao.val();
-        obj.prazo = prazo.val();
+            data: data
 
-        tarefas.push(obj);
-        var data = $.ConverterObjetoParaVraptor("tarefa", obj);
+        }).done(function(data) {
+            alert('Deu certo');
 
-        var url = $("#urlSalvar").val();
+            // window.location.href = "http://localhost:8080/servicos/lista"
+        }).fail(function(jqXHR, textStatus, errorThrown) {
 
-        statusTarefa.val('');
-        descricao.val('');
-        prazo.val('');
-        tecnico.val('');
+            alert("O serviço não foi salvo!");
+
+        });
     });
+
 
     btnServico.click(function(evento) {
         evento.preventDefault();

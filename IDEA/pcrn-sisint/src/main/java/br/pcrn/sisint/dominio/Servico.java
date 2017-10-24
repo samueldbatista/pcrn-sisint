@@ -11,7 +11,7 @@ import java.util.List;
 public class Servico {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(columnDefinition = "text")
@@ -26,19 +26,18 @@ public class Servico {
 
     private boolean deletado;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Usuario tecnico;
 
     @Enumerated(EnumType.STRING)
     private StatusServico statusServico;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigoServico;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Setor setor;
 
     private String prazoFinalização;

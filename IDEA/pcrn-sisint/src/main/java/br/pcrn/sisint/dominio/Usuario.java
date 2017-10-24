@@ -94,7 +94,10 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        this.senha = Criptografia.criptografar(senha);
+        if(senha.equals("")){}
+        else {
+            this.senha = Criptografia.criptografar(senha);
+        }
     }
 
     public boolean isDeletado() {

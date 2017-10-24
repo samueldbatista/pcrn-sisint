@@ -2,6 +2,7 @@ package br.pcrn.sisint.dominio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class Setor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean deletado;
     private String nome;
