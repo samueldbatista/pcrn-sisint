@@ -32,29 +32,34 @@
 
     <body style="background-color: rgba(226, 228, 228, 0.71)">
 
-    <nav class="navbar navbar-default" style="border-radius: 0px; box-shadow: 0px 1px 1px #888888;">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="${linkTo[ServicosController].lista}">
-                <img src="${ctx}/resources/imagens/sisint-logo-header.png" style="margin-left: -5px; margin-right: 5px; margin-top: 3px;"></img>
-                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SisInt</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="${linkTo[ServicosController].lista}">Serviços</a></li>
-                <li><a href="#">Tarefas</a></li>
-                <li><a href="${linkTo[UsuariosController].form}">Usuários</a></li>
-                <!--<li style="float: left;"><a href="#">teste</a></li>-->
-            </ul>
-            <ul class="nav navbar-nav pull-right">
-                <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">${usuarioLogado.usuario.login}</button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">HTML</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JavaScript</a></li>
-                    <li><a href="#">About Us</a></li>
-                </ul></div>
-            </ul>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="${linkTo[ServicoController].lista}">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Page 1-1</a></li>
+                            <li><a href="#">Page 1-2</a></li>
+                            <li><a href="#">Page 1-3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 3</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="${linkTo[LoginController].logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 

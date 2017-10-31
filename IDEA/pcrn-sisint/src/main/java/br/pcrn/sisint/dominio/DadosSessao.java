@@ -8,16 +8,28 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SessionScoped
-public class DadosSessao implements Serializable {
-
-    private List<Tarefa> tarefasSessao = new ArrayList<>();
-
-    public List<Tarefa> getTarefasSessao() {
-        return tarefasSessao;
-    }
-
-    public void setTarefasSessao(List<Tarefa> tarefasSessao) {
-        this.tarefasSessao = tarefasSessao;
-    }
-}
+//@Specializes
+//@SessionScoped
+//public class DadosSessao extends Sessao {
+//
+//    private Usuario usuario;
+//
+//    @Deprecated
+//    public DadosSessao() {
+//        this(null,null);
+//    }
+//
+//    public DadosSessao(HttpSession httpSession, Usuario usuario) {
+//        super(httpSession);
+//        this.usuario = usuario;
+//    }
+//
+//    public Usuario getUsuario() {
+//        return usuario;
+//    }
+//
+//    public void setUsuario(Usuario usuario) {
+//        this.usuario = usuario;
+//    }
+//
+//}

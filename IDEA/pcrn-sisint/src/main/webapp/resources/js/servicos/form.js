@@ -11,66 +11,85 @@ $(function () {
     
     $('#btnSalvarTarefa').click(function (e) {
         e.preventDefault();
+
+        var id = $("input[name='tarefa.id']");
         var titulo = $("input[name='tarefa.titulo']");
-        var tecnico = $("input[name='tarefa.tecnico']");
-        var descricao = $("input[name='tarefa.descricao']");
-        var titulo = $("input[name='tarefa.descricao']");
+        var tecnico = $("select[name='tarefa.tecnico']");
+        var descricao = $("textarea[name='tarefa.descricao']");
+        var dataFechamento = $("input[name='tarefa.dataFechamento']");
+        var pendencia = $("input[name='tarefa.pendencia']");
+        var status = $("select[name='tarefa.statusTarefa']");
+
         var urlTarefa = $("#urlSalvarTarefa").val();
+        var tecnicoResponsaval = {
+            id:tecnico.val()
+        }
+
+        var prazo = moment(dataFechamento.val(), 'DD/MM/YYYY').format('YYYY-MM-DD');
+        var dateteste =  moment.utc(prazo);
+        var prazo = dateteste.toISOString();
+
+        console.log(prazo);
         var tarefa = {};
-        tarefa.descricao = titulo.val();
-        console.log(tarefa.nome);
+        console.log(tecnico.val());
+        tarefa.id = id.val();
+        tarefa.titulo = titulo.val();
+        tarefa.tecnico = tecnicoResponsaval;
+        tarefa.descricao = descricao.val();
+        tarefa.dataFechamento = prazo;
+        tarefa.statusTarefa = status.val();
+        tarefa.pendencia = pendencia.val();
+
+        tarefas.push(tarefa);
         // var data = tarefa;
-         var data = $.ConverterObjetoParaVraptor("tarefa",tarefa);
-        $.ajax({
 
-            url: urlTarefa,
+        // var data = $.ConverterObjetoParaVraptor("tarefa",tarefa);
 
-            type: 'POST',
-
-            data: data
-
-        }).done(function(data) {
-            alert('Deu certo');
-
-            // window.location.href = "http://localhost:8080/servicos/lista"
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-
-            alert("O serviço não foi salvo!");
-
-        });
+        // $.ajax({
+        //     url: urlTarefa,
+        //
+        //     type: 'POST',
+        //
+        //     data: data
+        //
+        // }).done(function(data) {
+        //     alert('Deu certo');
+        //     //gerarAccodion de tarefa;
+        //     // window.location.href = "http://localhost:8080/servicos/lista"
+        // }).fail(function(jqXHR, textStatus, errorThrown) {
+        //
+        //     alert("O serviço não foi salvo!");
+        //
+        // });
     });
 
 
     btnServico.click(function(evento) {
         evento.preventDefault();
-        console.log("TESTESTESTE")
+
+        var id = $("input[name='servico.id']");
         var titulo = $("input[name='servico.titulo']");
         var dataFechamento = $("input[name='servico.dataFechamento']");
-        var pendencia = $("input[name='servico.pendencia']");
         var descricao = $("textarea[name='servico.descricao']");
-        var statusServico = $("select[name='servico.statusServico']");
         var prioridade = $("select[name='servico.prioridade']");
         var tecnico = $("select[name='servico.tecnico']");
         var setor = $("select[name='servico.setor']");
 
-        var obj = moment(dataFechamento.val(), 'DD/MM/YYYY').format('YYYY/MM/DD')
+        var obj = moment(dataFechamento.val(), 'DD/MM/YYYY').format('YYYY-MM-DD');
         var dateteste =  moment.utc(obj);
         var obj = dateteste.toISOString();
+        console.log(obj);
         var tecnicoResp = {};
         tecnicoResp.id = tecnico.val();
         var setorSolicitante = {};
         setorSolicitante.id = setor.val();
-
-
 
         console.log("ID DO SETOR: " + setor.val());
 
         var objeto = {};
         objeto.titulo = titulo.val();
         objeto.dataFechamento = obj;
-        objeto.pendencia = pendencia.val();
         objeto.descricao = descricao.val();
-        objeto.statusServico = statusServico.val();
         objeto.prioridade = prioridade.val();
         objeto.tecnico = tecnicoResp;
         objeto.tarefas = tarefas;
@@ -106,8 +125,3 @@ $(function () {
     });
 
 });
-
-
-
-
-

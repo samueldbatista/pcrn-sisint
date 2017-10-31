@@ -21,6 +21,25 @@
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>messages</param-value>
   </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/erros/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/erros/500.jsp</location>
+    </error-page>
+
+    <!--<error-page>-->
+        <!--<error-code>400</error-code>-->
+        <!--<location>/WEB-INF/jsp/erros/400.jsp</location>-->
+    <!--</error-page>-->
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/jsp/erros/403.jsp</location>
+    </error-page>
   
   <listener>
     <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>

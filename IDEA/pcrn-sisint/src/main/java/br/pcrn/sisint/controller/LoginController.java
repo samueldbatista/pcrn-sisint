@@ -10,9 +10,9 @@ import javax.inject.Inject;
 @Controller
 public class LoginController {
 
-    UsuarioLogado usuarioLogado;
-    Result resultado;
-    UsuarioDAO usuarioDao;
+    private UsuarioLogado usuarioLogado;
+    private Result resultado;
+    private UsuarioDAO usuarioDao;
 
     @Deprecated
     LoginController(){}
@@ -31,7 +31,7 @@ public class LoginController {
             resultado.forwardTo(LoginController.class).form();
         } else{
             usuarioLogado.setUsuario(usuarioLogin);
-            resultado.redirectTo(ServicosController.class).form();
+            resultado.redirectTo(ServicosController.class).lista();
         }
     }
 
@@ -43,5 +43,6 @@ public class LoginController {
     @Get("/logout")
     public void logout(){
         this.usuarioLogado.desloga();
+        this.resultado.redirectTo(ServicosController.class).lista();
     }
 }

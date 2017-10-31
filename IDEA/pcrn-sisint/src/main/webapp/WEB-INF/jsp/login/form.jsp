@@ -24,8 +24,8 @@
 <div class="container">
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <div class="panel col-md-4 col-md-offset-4" style="margin-top:100px;">
-        <div class="panel-heading">
-            <img src="${ctx}/resources/imagens/sisint-logo.png" style="margin-left: 40px;"/>
+        <div class="panel-heading" align="center">
+            <img src="${ctx}/resources/imagens/logo-transp.png" style="margin-top: 16px; margin-left: -20px;"/>
         </div>
         <div class="panel-body" style="padding-bottom: 75px;">
             <form method="post" action="${linkTo[LoginController].login}">

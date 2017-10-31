@@ -1,6 +1,7 @@
 package br.pcrn.sisint.dominio;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 /**
  * Created by samue on 09/09/2017.
@@ -12,10 +13,9 @@ public class Tarefa {
     private Long id;
 
     private String titulo;
-//    @OneToOne(fetch = FetchType.EAGER)
-//    private Usuario tecnicoResponsavel;
 
-    private String tecnico;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Usuario tecnico;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Servico servico;
@@ -26,8 +26,9 @@ public class Tarefa {
 
     private StatusTarefa statusTarefa;
 
-    private String prazo;
+    private LocalDate dataFechamento;
 
+    private boolean pendente;
 
     public Long getId() {
         return id;
@@ -36,14 +37,6 @@ public class Tarefa {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public Usuario getTecnicoResponsavel() {
-//        return tecnicoResponsavel;
-//    }
-
-//    public void setTecnicoResponsavel(Usuario tecnicoResponsavel) {
-//        this.tecnicoResponsavel = tecnicoResponsavel;
-//    }
 
     public String getDescricao() {
         return descricao;
@@ -69,12 +62,12 @@ public class Tarefa {
         this.statusTarefa = statusTarefa;
     }
 
-    public String getPrazo() {
-        return prazo;
+    public LocalDate getDataFechamento() {
+        return dataFechamento;
     }
 
-    public void setPrazo(String prazo) {
-        this.prazo = prazo;
+    public void setDataFechamento(LocalDate dataFechamento) {
+        this.dataFechamento = dataFechamento;
     }
 
     public String getTitulo() {
@@ -93,34 +86,11 @@ public class Tarefa {
         this.servico = servico;
     }
 
-    public String getTecnico() {
+    public Usuario getTecnico() {
         return tecnico;
     }
 
-    public void setTecnico(String tecnico) {
+    public void setTecnico(Usuario tecnico) {
         this.tecnico = tecnico;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-//        result = 31 * result + (getTecnicoResponsavel() != null ? getTecnicoResponsavel().hashCode() : 0);
-        result = 31 * result + (getDescricao() != null ? getDescricao().hashCode() : 0);
-        result = 31 * result + (getCodigoTarefa() != null ? getCodigoTarefa().hashCode() : 0);
-        result = 31 * result + (getStatusTarefa() != null ? getStatusTarefa().hashCode() : 0);
-        result = 31 * result + (getPrazo() != null ? getPrazo().hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Tarefa{" +
-                "id=" + id +
-//                ", tecnicoResponsavel=" + tecnicoResponsavel +
-                ", descricao='" + descricao + '\'' +
-                ", codigoTarefa=" + codigoTarefa +
-                ", statusTarefa=" + statusTarefa +
-                ", prazo=" + prazo +
-                '}';
     }
 }

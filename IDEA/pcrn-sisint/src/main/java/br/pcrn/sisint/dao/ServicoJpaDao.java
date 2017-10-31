@@ -18,7 +18,19 @@ public class ServicoJpaDao implements ServicoDao {
 
     @Override
     public void salvar(Servico servico) {
+        if(servico.getTarefas() != null){
+            referenciarTarefas(servico);
+        }
         this.manager.merge(servico);
+    }
+
+    private void referenciarTarefas(Servico servico) {
+        List<Tarefa> tarefas = servico.getTarefas();
+        for (Tarefa tarefa: tarefas) {
+            if(tarefa.getServico() == null) {
+                tarefa.setServico(servico);
+            }
+        }
     }
 
     @Override

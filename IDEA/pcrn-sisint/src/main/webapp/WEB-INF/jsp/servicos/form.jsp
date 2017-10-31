@@ -21,6 +21,10 @@
                 font-size: 12px;
             }
 
+            .datepicker {
+                z-index: 1151 !important;
+            }
+
             .panel-title {
                 border-bottom: 1px solid;
             }
@@ -69,22 +73,6 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="status-servico">Status</label>
-                                <select type="text" class="form-control" id="status-servico" placeholder="Status"
-                                        required="true"
-                                        name="servico.statusServico">
-                                    <option value=""></option>
-                                    <c:forEach items="${status}" var="s">
-                                        <c:if test="${s.valor == servico.statusServico.valor}">
-                                            <option value="${s.valor}" selected="true">${s.chave}</option>
-                                        </c:if>
-                                        <c:if test="${!(s.valor == servico.statusServico.valor)}">
-                                            <option value="${s.valor}">${s.chave}</option>
-                                        </c:if>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-2">
                                 <label for="data-fechamento-servico">Data de Finalização</label>
                                 <input type="text" class="form-control datePicker" id="data-fechamento-servico"
                                        required="true"
@@ -122,10 +110,6 @@
                                     </c:forEach>
                                 </select>
                             </div>
-                            <div class="checkbox col-md-2">
-                                <label><input type="checkbox" name="servico.pendencia" value="${servico.pendencia}">Possui
-                                    pendência</label>
-                            </div>
                             <div class="form-group col-md-12">
                                 <label for="descricao">Descrição:</label>
                                 <textarea class="form-control" name="servico.descricao" rows="2" required="true"
@@ -140,41 +124,117 @@
                             </button>
                         </div>
                     </div>
+                    <c:if test="${not empty servico.tarefas}">
+                        <c:forEach items="${servico.tarefas}" var="tarefa">
+                            <div class="panel-group" style="margin-top: 16px;" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse${tarefa.id}">
+                                                ${tarefa.titulo}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse${tarefa.id}" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            Atribuído a : ${tarefa.tecnico.nome}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
                 </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
-
+                        <input type="hidden" name="servico.id" value="${tarefa.id}"/>
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Modal Header</h4>
+                                <h4 class="modal-title">Cadastro de tarefa</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-horizontal">
                                     <div class="form-group">
                                         <label class="control-label col-sm-2" for="titulo-tarefa">Título:</label>
                                         <div class="col-sm-10">
-                                            <input type="email" name="tarefa.descricao" class="form-control" id="titulo-tarefa" placeholder="Titulo">
+                                            <input type="email" name="tarefa.titulo" class="form-control"
+                                                   id="titulo-tarefa" placeholder="Titulo">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-sm-2" for="pwd">Password:</label>
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                        <label class="control-label col-sm-2" for="data-fechamento-tarefa">Data de
+                                            Finalização:</label>
+                                        <div class="col-md-10">
+                                            <input type="text" class="form-control datePicker"
+                                                   id="data-fechamento-tarefa"
+                                                   required="true"
+                                                   value="${tarefa.dataFechamento}"
+                                                   placeholder="Data de finalização" name="tarefa.dataFechamento"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="status-tarefa">Status</label>
+                                        <div class="col-md-10">
+                                            <select type="text" class="form-control" id="status-tarefa"
+                                                    placeholder="Status"
+                                                    required="true"
+                                                    name="tarefa.statusTarefa">
+                                                <option value=""></option>
+                                                <c:forEach items="${status}" var="s">
+                                                    <c:if test="${s.valor == tarefa.statusTarefa.valor}">
+                                                        <option value="${s.valor}" selected="true">${s.chave}</option>
+                                                    </c:if>
+                                                    <c:if test="${!(s.valor == tarefa.statusTarefa.valor)}">
+                                                        <option value="${s.valor}">${s.chave}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="tecnico-tarefa">Ténico
+                                            Responsável</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="tecnico-tarefa" name="tarefa.tecnico">
+                                                <option value=""></option>
+                                                <c:forEach items="${usuarios}" var="usuario">
+                                                    <c:if test="${usuario.valor == servico.tecnico.id}">
+                                                        <option value="${usuario.valor}"
+                                                                selected="true">${usuario.chave}</option>
+                                                    </c:if>
+                                                    <c:if test="${!(usuario.valor == servico.tecnico.id)}">
+                                                        <option value="${usuario.valor}">${usuario.chave}</option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <label>Possui pendência:
+                                        <div style="margin-left: 16px; float: right;">
+                                            <input type="checkbox" name="tarefa.pendencia" value="${tarefa.pendencia}">
+                                        </div>
+                                    </label>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="descricao-tarefa">Descrição:</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="tarefa.descricao" rows="2"
+                                                      required="true"
+                                                      id="descricao-tarefa">${tarefa.descricao}</textarea>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="btnSalvarTarefa" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                <button id="btnSalvarTarefa" type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Salvar
+                                </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="panel-footer" align="right">

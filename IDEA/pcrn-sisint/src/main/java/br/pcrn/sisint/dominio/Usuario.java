@@ -19,6 +19,7 @@ public class Usuario {
 
     private String nome;
 
+    @NotNull
     private String login;
 
     private String email;
@@ -29,6 +30,7 @@ public class Usuario {
 
     private LocalDate dataCadastro;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
 
@@ -94,10 +96,7 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        if(senha.equals("")){}
-        else {
-            this.senha = Criptografia.criptografar(senha);
-        }
+        this.senha = senha;
     }
 
     public boolean isDeletado() {
@@ -107,4 +106,5 @@ public class Usuario {
     public void setDeletado(boolean deletado) {
         this.deletado = deletado;
     }
+
 }
