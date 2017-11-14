@@ -30,9 +30,9 @@
         <jsp:invoke fragment="cabecalho"/>
     </head>
 
-    <body style="background-color: rgba(226, 228, 228, 0.71)">
-
-    <nav class="navbar navbar-inverse">
+    <body style="background-color: rgba(232, 232, 232, 0.71)">
+    <input id="ctx" type="hidden" value="${linkTo[ServicosController].salvar}"/>
+    <nav class="navbar" style="background-color: white; padding: 5px; box-shadow: 2px 1px #ddd; border-radius: 0px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -46,14 +46,21 @@
                 <ul class="nav navbar-nav">
                     <li><a href="${linkTo[ServicoController].lista}">Home</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviços <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Page 1-1</a></li>
                             <li><a href="#">Page 1-2</a></li>
                             <li><a href="#">Page 1-3</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Page 2</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tarefas <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="${linkTo[ControllerServicos].lista}">Listar tarefas </a></li>
+                            <li><a href="#">Tarefas em aberto</a></li>
+                            <li><a href="#">Minhas tarefas</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Page 3</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

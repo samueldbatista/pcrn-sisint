@@ -40,6 +40,7 @@ public class SegurancaInterceptor {
     @AroundCall
     public void autoriza(SimpleInterceptorStack stack, ControllerMethod method) {
         acesso(method);
+        stack.next();
     }
 
     /**

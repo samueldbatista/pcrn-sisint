@@ -8,6 +8,7 @@ import java.time.LocalDate;
  */
 @Entity
 public class Tarefa {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,8 +23,9 @@ public class Tarefa {
 
     private String descricao;
 
-    private Long codigoTarefa;
+    private String codigoTarefa;
 
+    @Enumerated(EnumType.STRING)
     private StatusTarefa statusTarefa;
 
     private LocalDate dataFechamento;
@@ -46,11 +48,11 @@ public class Tarefa {
         this.descricao = descricao;
     }
 
-    public Long getCodigoTarefa() {
+    public String getCodigoTarefa() {
         return codigoTarefa;
     }
 
-    public void setCodigoTarefa(Long codigoTarefa) {
+    public void setCodigoTarefa(String codigoTarefa) {
         this.codigoTarefa = codigoTarefa;
     }
 
@@ -92,5 +94,13 @@ public class Tarefa {
 
     public void setTecnico(Usuario tecnico) {
         this.tecnico = tecnico;
+    }
+
+    public boolean isPendente() {
+        return pendente;
+    }
+
+    public void setPendente(boolean pendente) {
+        this.pendente = pendente;
     }
 }

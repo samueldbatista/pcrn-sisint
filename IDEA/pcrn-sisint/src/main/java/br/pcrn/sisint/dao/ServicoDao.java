@@ -11,4 +11,5 @@ public interface ServicoDao {
     void salvar(Servico servico);
     List<Servico> listarServicos();
     Servico BuscarPorId(Long id);
+    Long ultimoId();
 }

@@ -9,6 +9,7 @@ import br.pcrn.sisint.dominio.Usuario;
 import br.pcrn.sisint.util.OpcaoSelect;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +41,9 @@ public class ServicosNegocio {
         return todos.stream().map(
                 setor -> new OpcaoSelect(setor.getNome(), setor.getId()))
                 .collect(Collectors.toList());
+    }
+
+    public String gerarCodigoServico (Long id) {
+        return "S" + LocalDate.now().getYear() + id;
     }
 }

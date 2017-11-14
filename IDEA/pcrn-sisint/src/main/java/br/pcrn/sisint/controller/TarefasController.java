@@ -6,6 +6,7 @@ import br.pcrn.sisint.dao.TarefaDao;
 import br.pcrn.sisint.dominio.Tarefa;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Controller
 public class TarefasController extends ControladorSisInt {
@@ -22,6 +23,8 @@ public class TarefasController extends ControladorSisInt {
         this.tarefaDao = tarefaDao;
     }
 
+    public void form(){}
+
     public void salvar() {
 
     }
@@ -31,7 +34,20 @@ public class TarefasController extends ControladorSisInt {
     public void remover() {
 
     }
+
     public void listar(){
-        this.resultado.include("tarefas", tarefaDao.listar());
+        this.resultado.include("tarefas", tarefaDao.todos());
     }
+
+    public void minhasTarefas () {
+        List<Tarefa> minhasTarefas =  tarefaDao.minhasTarefas();
+        resultado.include("tarefas", minhasTarefas);
+    }
+
+    public void tarefasAbertas () {
+        List<Tarefa> tarefasAbertas =  tarefaDao.tarefasEmAberto();
+        resultado.include("tarefas", tarefasAbertas);
+    }
+
+
 }

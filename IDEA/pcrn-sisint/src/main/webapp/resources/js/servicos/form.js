@@ -5,64 +5,8 @@
 $(function () {
 
     console.log('Carregou com sucesso!');
-    var tarefas = [];
     var btnSalvarTarefas = $('#btnt');
     var btnServico = $('#btnServico');
-    
-    $('#btnSalvarTarefa').click(function (e) {
-        e.preventDefault();
-
-        var id = $("input[name='tarefa.id']");
-        var titulo = $("input[name='tarefa.titulo']");
-        var tecnico = $("select[name='tarefa.tecnico']");
-        var descricao = $("textarea[name='tarefa.descricao']");
-        var dataFechamento = $("input[name='tarefa.dataFechamento']");
-        var pendencia = $("input[name='tarefa.pendencia']");
-        var status = $("select[name='tarefa.statusTarefa']");
-
-        var urlTarefa = $("#urlSalvarTarefa").val();
-        var tecnicoResponsaval = {
-            id:tecnico.val()
-        }
-
-        var prazo = moment(dataFechamento.val(), 'DD/MM/YYYY').format('YYYY-MM-DD');
-        var dateteste =  moment.utc(prazo);
-        var prazo = dateteste.toISOString();
-
-        console.log(prazo);
-        var tarefa = {};
-        console.log(tecnico.val());
-        tarefa.id = id.val();
-        tarefa.titulo = titulo.val();
-        tarefa.tecnico = tecnicoResponsaval;
-        tarefa.descricao = descricao.val();
-        tarefa.dataFechamento = prazo;
-        tarefa.statusTarefa = status.val();
-        tarefa.pendencia = pendencia.val();
-
-        tarefas.push(tarefa);
-        // var data = tarefa;
-
-        // var data = $.ConverterObjetoParaVraptor("tarefa",tarefa);
-
-        // $.ajax({
-        //     url: urlTarefa,
-        //
-        //     type: 'POST',
-        //
-        //     data: data
-        //
-        // }).done(function(data) {
-        //     alert('Deu certo');
-        //     //gerarAccodion de tarefa;
-        //     // window.location.href = "http://localhost:8080/servicos/lista"
-        // }).fail(function(jqXHR, textStatus, errorThrown) {
-        //
-        //     alert("O serviço não foi salvo!");
-        //
-        // });
-    });
-
 
     btnServico.click(function(evento) {
         evento.preventDefault();

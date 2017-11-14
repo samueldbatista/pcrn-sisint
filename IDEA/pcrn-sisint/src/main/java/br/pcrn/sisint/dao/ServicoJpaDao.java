@@ -2,10 +2,12 @@ package br.pcrn.sisint.dao;
 
 import br.pcrn.sisint.dominio.Servico;
 import br.pcrn.sisint.dominio.Tarefa;
+import org.hibernate.SQLQuery;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -36,8 +38,6 @@ public class ServicoJpaDao implements ServicoDao {
     @Override
     public List<Servico> listarServicos() {
         Query query = manager.createQuery("select s from Servico s where s.deletado = false");
-
-
         return query.getResultList();
     }
 
@@ -47,5 +47,13 @@ public class ServicoJpaDao implements ServicoDao {
 
         query.setParameter("id", id);
         return (Servico) query.getSingleResult();
+    }
+
+    @Override
+    public Long ultimoId() {
+        String seq_id = "servico_id_seq";
+        Query query = manager.createNativeQuery("SELECT last_value from servico_id_seq");
+        BigInteger nextId = (BigInteger) query.getSingleResult();
+        return Long.valueOf(nextId.toString());
     }
 }

@@ -5,6 +5,9 @@ import br.pcrn.sisint.dominio.Tarefa;
 import java.util.List;
 
 public interface TarefaDao {
-    public void salvar(Tarefa tarefa);
-    public List<Tarefa> listar();
+    void salvar(Tarefa tarefa);
+    List<Tarefa> todos();
+    List<Tarefa> tarefasEmAberto();
+    List<Tarefa> minhasTarefas();
+
 }

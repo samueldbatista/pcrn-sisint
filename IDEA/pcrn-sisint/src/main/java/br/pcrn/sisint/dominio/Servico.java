@@ -8,10 +8,12 @@ import java.util.List;
  * Created by samue on 09/09/2017.
  */
 @Entity
+@SequenceGenerator(name = "servico_id_seq", sequenceName = "servico_id_seq", allocationSize = 1)
 public class Servico {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "servico_id_seq", sequenceName = "servico_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "servico_id_seq")
     private Long id;
 
     @Column(columnDefinition = "text")
@@ -32,19 +34,16 @@ public class Servico {
     @Enumerated(EnumType.STRING)
     private StatusServico statusServico;
 
-    private Long codigoServico;
+    private String codigoServico;
 
+    @Column(name = "servico_tarefa")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Setor setor;
 
-    private String prazoFinalização;
-
     private Prioridade prioridade;
-
-    private boolean pendencia;
 
     public Long getId() {
         return id;
@@ -110,11 +109,11 @@ public class Servico {
         this.statusServico = statusServico;
     }
 
-    public Long getCodigoServico() {
+    public String getCodigoServico() {
         return codigoServico;
     }
 
-    public void setCodigoServico(Long codigoServico) {
+    public void setCodigoServico(String codigoServico) {
         this.codigoServico = codigoServico;
     }
 
@@ -134,14 +133,6 @@ public class Servico {
         this.setor = setor;
     }
 
-    public String getPrazoFinalização() {
-        return prazoFinalização;
-    }
-
-    public void setPrazoFinalização(String prazoFinalização) {
-        this.prazoFinalização = prazoFinalização;
-    }
-
     public Prioridade getPrioridade() {
         return prioridade;
     }
@@ -150,44 +141,44 @@ public class Servico {
         this.prioridade = prioridade;
     }
 
-    public boolean isPendencia() {
-        return pendencia;
-    }
-
-    public void setPendencia(boolean pendencia) {
-        this.pendencia = pendencia;
-    }
-
     @Override
-    public String toString() {
-        return "Servico{" +
-                "id=" + id +
-                ", dataAbertura=" + dataAbertura +
-                ", dataFechamento=" + dataFechamento +
-                ", descricao='" + descricao + '\'' +
-                ", deletado=" + deletado +
-//                ", usuarioResponsavel=" + usuarioResponsavel +
-                ", statusServico=" + statusServico +
-                ", codigoServico=" + codigoServico +
-                ", tarefas=" + tarefas +
-                ", setor=" + setor +
-                ", prazoFinalização=" + prazoFinalização +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Servico servico = (Servico) o;
+
+        if (deletado != servico.deletado) return false;
+        if (id != null ? !id.equals(servico.id) : servico.id != null) return false;
+        if (titulo != null ? !titulo.equals(servico.titulo) : servico.titulo != null) return false;
+        if (dataAbertura != null ? !dataAbertura.equals(servico.dataAbertura) : servico.dataAbertura != null)
+            return false;
+        if (dataFechamento != null ? !dataFechamento.equals(servico.dataFechamento) : servico.dataFechamento != null)
+            return false;
+        if (descricao != null ? !descricao.equals(servico.descricao) : servico.descricao != null) return false;
+        if (tecnico != null ? !tecnico.equals(servico.tecnico) : servico.tecnico != null) return false;
+        if (statusServico != servico.statusServico) return false;
+        if (codigoServico != null ? !codigoServico.equals(servico.codigoServico) : servico.codigoServico != null)
+            return false;
+        if (tarefas != null ? !tarefas.equals(servico.tarefas) : servico.tarefas != null) return false;
+        if (setor != null ? !setor.equals(servico.setor) : servico.setor != null) return false;
+        return prioridade == servico.prioridade;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (titulo != null ? titulo.hashCode() : 0);
         result = 31 * result + (dataAbertura != null ? dataAbertura.hashCode() : 0);
         result = 31 * result + (dataFechamento != null ? dataFechamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (deletado ? 1 : 0);
-//        result = 31 * result + (usuarioResponsavel != null ? usuarioResponsavel.hashCode() : 0);
+        result = 31 * result + (tecnico != null ? tecnico.hashCode() : 0);
         result = 31 * result + (statusServico != null ? statusServico.hashCode() : 0);
         result = 31 * result + (codigoServico != null ? codigoServico.hashCode() : 0);
         result = 31 * result + (tarefas != null ? tarefas.hashCode() : 0);
         result = 31 * result + (setor != null ? setor.hashCode() : 0);
-        result = 31 * result + (prazoFinalização != null ? prazoFinalização.hashCode() : 0);
+        result = 31 * result + (prioridade != null ? prioridade.hashCode() : 0);
         return result;
     }
 }

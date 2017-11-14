@@ -30,8 +30,6 @@ public class ServicosController {
     private UsuarioDAO usuarioDAO;
     private ServicosNegocio servicosNegocio;
 
-    private List<Tarefa> tarefas1 = new ArrayList<>();
-
     /**
      * @deprecated CDI eyes only
      */
@@ -63,35 +61,38 @@ public class ServicosController {
         if(servico != null){
             servico.setDataAbertura(LocalDate.now());
         }
-        if(servico.getTitulo() == null){
+
+        if(servico.getTitulo() == null) {
             validador.add( new SimpleMessage("titulo", "Titulo é obrigatório"));
         }
+        Long ultimo=  servicoDao.ultimoId();
+        servico.setCodigoServico(servicosNegocio.gerarCodigoServico(ultimo));
         servico.setStatusServico(StatusServico.EM_ESPERA);
         validador.onErrorRedirectTo(this).form();
         this.servicoDao.salvar(servico);
         result.redirectTo((this)).lista();
     }
     public void salvarTarefa(Tarefa tarefa){
-        tarefas1.add(tarefa);
         result.nothing();
     }
     public void lista() {
-
         List<Servico> servicos = this.servicoDao.listarServicos();
         result.include("servicos", servicos);
     }
 
     @Get
-//    @Path("/listaTarefas/{id}")
     public void listaTarefas(Long id) {
         Servico servico = servicoDao.BuscarPorId(id);
         JsonArray listaServicos = new JsonArray();
+
         if(servico != null) {
             for (Tarefa tarefa: servico.getTarefas()) {
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("id", tarefa.getId());
-                jsonObject.addProperty("Titulo", tarefa.getTitulo());
-                jsonObject.addProperty("status", tarefa.getStatusTarefa().getChave());
+                jsonObject.addProperty("titulo", tarefa.getTitulo());
+                jsonObject.addProperty("statusValor", tarefa.getStatusTarefa().getValor());
+                jsonObject.addProperty("statusChave", tarefa.getStatusTarefa().getChave());
+                jsonObject.addProperty("dataFechamento", tarefa.getDataFechamento().toString());
                 jsonObject.addProperty("descricao", tarefa.getDescricao());
                 jsonObject.addProperty("servicoId", tarefa.getServico().getId());
                 jsonObject.addProperty("tecnicoId", tarefa.getTecnico().getId());
@@ -101,7 +102,6 @@ public class ServicosController {
         } else {
 
         }
-
     }
 
     public void editar(Long id){

@@ -33,23 +33,24 @@
 
     <jsp:attribute name="rodape">
 
-        <script src="${ctx}/resources/js/servicos/form.js"></script>
+        <%--<script src="${ctx}/resources/js/servicos/form.js"></script>--%>
         <%--<script src="${ctx}/resources/js/servicos/saveAjax.js"></script>--%>
         <script src="${ctx}/resources/js/ConverterObjetoParaVRaptor.js"></script>
         <script src="${ctx}/resources/plugins/jquerySteps/jquery.steps.min.js"></script>
         <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"></script>
+        <script src="${ctx}/resources/js/servicos/tarefas.js"></script>
     </jsp:attribute>
 
     <jsp:body>
         <div class="panel">
-            <form>
+            <form id="form-servico-tarefa" action="${linkTo[ServicosController].salvar}" method="post">
                 <div class="panel-body">
                     <input id="urlSalvar" type="hidden" value="${linkTo[ServicosController].salvar}"/>
                     <input id="urlSalvarTarefa" type="hidden" value="${linkTo[ServicosController].salvarTarefa}"/>
                     <h4 class="tituloCadastro">Cadastro de Serviços</h4>
                     <div id="cadastro-servico">
                         <div class="row">
-                            <input type="hidden" name="servico.id" value="${servico.id}"/>
+                            <input id="servico-id" type="hidden" name="servico.id" value="${servico.id}"/>
                             <div class="form-group col-md-6">
                                 <label for="titulo-servico">Título</label>
                                 <input type="text" class="form-control input-sm" id="titulo-servico" required="true"
@@ -59,7 +60,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="setor-servico">Setor solicitante</label>
-                                <select class="form-control input-sm" id="setor-servico" name="servico.setor">
+                                <select class="form-control input-sm" id="setor-servico" name="servico.setor.id">
                                     <option value=""></option>
                                     <c:forEach items="${setores}" var="setor">
                                         <c:if test="${setor.valor == servico.setor.id}">
@@ -72,7 +73,7 @@
 
                                 </select>
                             </div>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-3">
                                 <label for="data-fechamento-servico">Data de Finalização</label>
                                 <input type="text" class="form-control datePicker" id="data-fechamento-servico"
                                        required="true"
@@ -80,7 +81,7 @@
                                        placeholder="Data de finalização" name="servico.dataFechamento"/>
                             </div>
 
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-3">
                                 <label for="prioridade-servico">Prioridade</label>
                                 <select class="form-control input-sm" id="prioridade-servico" name="servico.prioridade">
                                     <option value=""></option>
@@ -96,9 +97,9 @@
 
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="tecnico-servico">Ténico Responsável</label>
-                                <select class="form-control input-sm" id="tecnico-servico" name="servico.tecnico">
+                                <select class="form-control input-sm" id="tecnico-servico" name="servico.tecnico.id">
                                     <option value=""></option>
                                     <c:forEach items="${usuarios}" var="usuario">
                                         <c:if test="${usuario.valor == servico.tecnico.id}">
@@ -124,27 +125,20 @@
                             </button>
                         </div>
                     </div>
-                    <c:if test="${not empty servico.tarefas}">
-                        <c:forEach items="${servico.tarefas}" var="tarefa">
-                            <div class="panel-group" style="margin-top: 16px;" id="accordion">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse${tarefa.id}">
-                                                ${tarefa.titulo}</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse${tarefa.id}" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            Atribuído a : ${tarefa.tecnico.nome}
-                                        </div>
-                                    </div>
-                                </div>
+                    <div id="tarefas-cadastradas">
+                        <div class="col-md-2">
+                            <div class="well" style="padding: 15px;">
+                                <a id="editar-tarefa" href="#"><i class="fa fa-pencil-square"></i></a>
+                                Tarefa 1
                             </div>
-                        </c:forEach>
-                    </c:if>
-                </div>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="panel-footer" align="right">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </div>
+            </form>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -237,10 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer" align="right">
-                    <button class="btn btn-primary" type="button" href="#" id="btnServico">Salvar</button>
-                </div>
-            </form>
+
         </div>
     </jsp:body>
 </tags:teste>

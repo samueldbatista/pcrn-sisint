@@ -31,7 +31,7 @@ $(document).ready(function () {
             $(this).addClass('label-warning');
         }
     });
-    var table= $('#tabela-servico').DataTable( {
+    var table= $('.tabela').DataTable( {
         pageLength:25,
         "language":
             {
