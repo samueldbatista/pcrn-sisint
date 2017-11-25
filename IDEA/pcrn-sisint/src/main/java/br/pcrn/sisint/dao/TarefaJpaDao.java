@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.text.html.parser.Entity;
+import java.math.BigInteger;
 import java.util.List;
 
 public class TarefaJpaDao implements TarefaDao{
@@ -49,5 +50,20 @@ public class TarefaJpaDao implements TarefaDao{
         query.setParameter("usuario", usuarioLogado.getUsuario().getId());
         List<Tarefa> tarefas = query.getResultList();
         return tarefas;
+    }
+
+    @Override
+    public Long ultimoId() {
+        Query query = manager.createNativeQuery("SELECT last_value from tarefa_id_seq");
+        BigInteger nextId = (BigInteger) query.getSingleResult();
+        return Long.valueOf(nextId.toString());
+    }
+
+    @Override
+    public Tarefa buscarPorId(Long id) {
+        Query query = manager.createQuery("select t from Tarefa t where t.id = :id");
+
+        query.setParameter("id", id);
+        return (Tarefa) query.getSingleResult();
     }
 }

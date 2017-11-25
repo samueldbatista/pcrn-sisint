@@ -9,5 +9,6 @@ public interface TarefaDao {
     List<Tarefa> todos();
     List<Tarefa> tarefasEmAberto();
     List<Tarefa> minhasTarefas();
-
+    Long ultimoId();
+    Tarefa buscarPorId(Long id);
 }

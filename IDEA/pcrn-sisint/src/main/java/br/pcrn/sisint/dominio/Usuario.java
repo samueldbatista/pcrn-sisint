@@ -11,10 +11,12 @@ import java.time.LocalDate;
  * Created by samue on 08/09/2017.
  */
 @Entity
+@SequenceGenerator(name = "usuario_id_seq", sequenceName = "usuario_id_seq", allocationSize = 1)
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "usuario_id_seq", sequenceName = "usuario_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "usuario_id_seq")
     private Long id;
 
     private String nome;

@@ -10,6 +10,8 @@ import java.util.List;
 public interface ServicoDao {
     void salvar(Servico servico);
     List<Servico> listarServicos();
+    public List<Servico> listarMeusServicos(Long id);
+    public List<Servico> listarServicosEmAberto();
     Servico BuscarPorId(Long id);
     Long ultimoId();
 }

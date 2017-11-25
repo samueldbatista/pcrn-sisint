@@ -31,6 +31,13 @@ $(document).ready(function () {
             $(this).addClass('label-warning');
         }
     });
+
+    $(".date-column").each(function () {
+       var data =  $(this).text();
+       data = moment(data, 'YYYY-MM-DD').format('DD/MM/YYYY');
+       $(this).text(data);
+    });
+
     var table= $('.tabela').DataTable( {
         pageLength:25,
         "language":

@@ -14,9 +14,11 @@ import br.pcrn.sisint.negocio.ServicosNegocio;
 import br.pcrn.sisint.util.OpcaoSelect;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import sun.rmi.runtime.Log;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,9 @@ public class ServicosController {
     private Validator validador;
     private UsuarioDAO usuarioDAO;
     private ServicosNegocio servicosNegocio;
+
+    @Inject
+    private UsuarioLogado usuarioLogado;
 
     /**
      * @deprecated CDI eyes only
@@ -58,26 +63,75 @@ public class ServicosController {
     @Post("/servicos")
     @Transacional
     public void salvar(Servico servico) {
-        if(servico != null){
+        if(servico.getId() == null){
             servico.setDataAbertura(LocalDate.now());
+            if(servico.getTecnico().getId() == null) {
+                servico.setTecnico(null);
+            }
         }
 
         if(servico.getTitulo() == null) {
             validador.add( new SimpleMessage("titulo", "Titulo é obrigatório"));
         }
+
+        if(servico.getTarefas() == null || servico.getTecnico() == null) {
+            servico.setStatusServico(StatusServico.EM_ESPERA);
+        } else {
+            servico.setStatusServico(StatusServico.EM_EXECUCAO);
+        }
         Long ultimo=  servicoDao.ultimoId();
-        servico.setCodigoServico(servicosNegocio.gerarCodigoServico(ultimo));
-        servico.setStatusServico(StatusServico.EM_ESPERA);
+        if(servico.getCodigoServico() == null) {
+            servico.setCodigoServico(servicosNegocio.gerarCodigoServico(ultimo));
+            if(servico.getTarefas() != null) {
+                if(!servico.getTarefas().isEmpty()) {
+                    servicosNegocio.gerarCodigoTarefas(servico.getCodigoServico(), servico.getTarefas());
+                }
+            }
+        } else {
+            if(servico.getTarefas() != null) {
+                servicosNegocio.gerarCodigoTarefas(servico.getCodigoServico(), servico.getTarefas());
+            }
+        }
+        servicosNegocio.gerarLog(servico);
+        if(servico.getTarefas() != null) {
+            if(servicosNegocio.verificarConclusaoServico(servico.getTarefas())) {
+                servico.setStatusServico(StatusServico.CONCLUIDO);
+                LogServico logServico = new LogServico();
+                logServico.setLog("Servico " + servico.getCodigoServico() + " foi concluído.");
+                logServico.setServico(servico);
+                logServico.setDataAlteracao(LocalDateTime.now());
+                logServico.setUsuario(usuarioLogado.getUsuario());
+                servico.getLogServicos().add(logServico);
+            }
+        }
         validador.onErrorRedirectTo(this).form();
         this.servicoDao.salvar(servico);
         result.redirectTo((this)).lista();
     }
-    public void salvarTarefa(Tarefa tarefa){
-        result.nothing();
+
+    public void logServico(Long id) {
+        Servico servico = servicoDao.BuscarPorId(id);
+        result.include("listaLogs", servico.getLogServicos());
     }
+
     public void lista() {
         List<Servico> servicos = this.servicoDao.listarServicos();
         result.include("servicos", servicos);
+    }
+
+    public void meusServicos() {
+        List<Servico> servicos = this.servicoDao.listarMeusServicos(usuarioLogado.getUsuario().getId());
+        result.include("servicos", servicos);
+    }
+
+    public void servicosAbertos() {
+        List<Servico> servicos = this.servicoDao.listarServicosEmAberto();
+        result.include("servicos", servicos);
+    }
+
+    public void detalhes(Long id){
+        Servico servico = servicoDao.BuscarPorId(id);
+        result.include("servico",servico);
     }
 
     @Get
@@ -96,6 +150,29 @@ public class ServicosController {
                 jsonObject.addProperty("descricao", tarefa.getDescricao());
                 jsonObject.addProperty("servicoId", tarefa.getServico().getId());
                 jsonObject.addProperty("tecnicoId", tarefa.getTecnico().getId());
+                jsonObject.addProperty("codigoTarefa", tarefa.getCodigoTarefa());
+                jsonObject.addProperty("dataAbertura", tarefa.getDataAbertura().toString());
+                listaServicos.add(jsonObject);
+            }
+            result.use(Results.json()).withoutRoot().from(listaServicos).recursive().serialize();
+        } else {
+
+        }
+    }
+
+    @Get
+    public void listaLogs(Long id) {
+        Servico servico = servicoDao.BuscarPorId(id);
+        JsonArray listaServicos = new JsonArray();
+
+        if(servico != null) {
+            for (LogServico logServico: servico.getLogServicos()) {
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("id", logServico.getId());
+                jsonObject.addProperty("titulo", logServico.getLog());
+                jsonObject.addProperty("dataFechamento", logServico.getDataAlteracao().toString());
+                jsonObject.addProperty("servico", logServico.getServico().getId());
+                jsonObject.addProperty("usuario", logServico.getUsuario().getId());
                 listaServicos.add(jsonObject);
             }
             result.use(Results.json()).withoutRoot().from(listaServicos).recursive().serialize();
@@ -111,7 +188,9 @@ public class ServicosController {
         result.include("status", OpcaoSelect.toListaOpcoes(StatusServico.values()));
         result.include("statusTarefa",OpcaoSelect.toListaOpcoes(StatusTarefa.values()));
         result.include("prioridades", OpcaoSelect.toListaOpcoes(Prioridade.values()));
+        result.include("listaLogs", servico.getLogServicos());
         result.include(servico);
         result.of(this).form();
     }
+
 }

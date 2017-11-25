@@ -1,17 +1,16 @@
 package br.pcrn.sisint.dominio;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by samue on 08/09/2017.
  */
 @Entity
+@SequenceGenerator(name = "setor_id_seq", sequenceName = "setor_id_seq", allocationSize = 1)
 public class Setor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "setor_id_seq", sequenceName = "setor_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "setor_id_seq")
     private Long id;
     private boolean deletado;
     private String nome;

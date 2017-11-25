@@ -37,11 +37,18 @@ public class Servico {
     private String codigoServico;
 
     @Column(name = "servico_tarefa")
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
+
+    @Column(name ="log_servico")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<LogServico> logServicos;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Setor setor;
+
+    @Column(name="nome_solicitante")
+    private String nomeSolicitante;
 
     private Prioridade prioridade;
 
@@ -139,6 +146,22 @@ public class Servico {
 
     public void setPrioridade(Prioridade prioridade) {
         this.prioridade = prioridade;
+    }
+
+    public List<LogServico> getLogServicos() {
+        return logServicos;
+    }
+
+    public void setLogServicos(List<LogServico> logServicos) {
+        this.logServicos = logServicos;
+    }
+
+    public String getNomeSolicitante() {
+        return nomeSolicitante;
+    }
+
+    public void setNomeSolicitante(String nomeSolicitante) {
+        this.nomeSolicitante = nomeSolicitante;
     }
 
     @Override

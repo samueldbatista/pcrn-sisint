@@ -7,10 +7,12 @@ import java.time.LocalDate;
  * Created by samue on 09/09/2017.
  */
 @Entity
+@SequenceGenerator(name = "tarefa_id_seq", sequenceName = "tarefa_id_seq", allocationSize = 1)
 public class Tarefa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "tarefa_id_seq", sequenceName = "tarefa_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "tarefa_id_seq")
     private Long id;
 
     private String titulo;
@@ -29,6 +31,8 @@ public class Tarefa {
     private StatusTarefa statusTarefa;
 
     private LocalDate dataFechamento;
+
+    private LocalDate dataAbertura;
 
     private boolean pendente;
 
@@ -102,5 +106,13 @@ public class Tarefa {
 
     public void setPendente(boolean pendente) {
         this.pendente = pendente;
+    }
+
+    public LocalDate getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(LocalDate dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 }

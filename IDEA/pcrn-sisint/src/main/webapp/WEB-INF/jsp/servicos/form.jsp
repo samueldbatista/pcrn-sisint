@@ -44,13 +44,22 @@
     <jsp:body>
         <div class="panel">
             <form id="form-servico-tarefa" action="${linkTo[ServicosController].salvar}" method="post">
+                <c:forEach items="${listaLogs}" var="log" varStatus="status">
+                    <input type="hidden" name="servico.logServicos[${status.index}].id" value="${log.id}"/>
+                    <input type="hidden" name="servico.logServicos[${status.index}].log" value="${log.log}"/>
+                    <input type="hidden" name="servico.logServicos[${status.index}].usuario.id" value="${log.usuario.id}"/>
+                    <input type="hidden" name="servico.logServicos[${status.index}].servico.id" value="${log.servico.id}"/>
+                    <input type="hidden" name="servico.logServicos[${status.index}].dataAlteracao" value="${log.dataAlteracao}"/>
+                </c:forEach>
+                <input type="hidden" name="servico.codigoServico" value="${servico.codigoServico}"/>
+                <div id="container-inputs-tarefa"></div>
                 <div class="panel-body">
                     <input id="urlSalvar" type="hidden" value="${linkTo[ServicosController].salvar}"/>
-                    <input id="urlSalvarTarefa" type="hidden" value="${linkTo[ServicosController].salvarTarefa}"/>
                     <h4 class="tituloCadastro">Cadastro de Serviços</h4>
                     <div id="cadastro-servico">
                         <div class="row">
                             <input id="servico-id" type="hidden" name="servico.id" value="${servico.id}"/>
+                            <input id="servico-dataAbertura" type="hidden" name="servico.dataAbertura" value="${servico.dataAbertura}"/>
                             <div class="form-group col-md-6">
                                 <label for="titulo-servico">Título</label>
                                 <input type="text" class="form-control input-sm" id="titulo-servico" required="true"
@@ -58,7 +67,14 @@
                                        placeholder="Titulo do serviço"
                                        name="servico.titulo"/>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
+                                <label for="nomeSolicitante-servico">Nome do solicitante</label>
+                                <input type="text" class="form-control input-sm" id="nomeSolicitante-servico"
+                                       required="true"
+                                       value="${servico.nomeSolicitante}"
+                                       placeholder="Nome do solicitante" name="servico.nomeSolicitante"/>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <label for="setor-servico">Setor solicitante</label>
                                 <select class="form-control input-sm" id="setor-servico" name="servico.setor.id">
                                     <option value=""></option>
@@ -73,6 +89,7 @@
 
                                 </select>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label for="data-fechamento-servico">Data de Finalização</label>
                                 <input type="text" class="form-control datePicker" id="data-fechamento-servico"
@@ -120,18 +137,12 @@
                     </div>
                     <div id="cadastro-tarefa">
                         <div class="row" align="right">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            <button id="btnAdicionarTarefa" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                                 Adicionar
                             </button>
                         </div>
                     </div>
-                    <div id="tarefas-cadastradas">
-                        <div class="col-md-2">
-                            <div class="well" style="padding: 15px;">
-                                <a id="editar-tarefa" href="#"><i class="fa fa-pencil-square"></i></a>
-                                Tarefa 1
-                            </div>
-                        </div>
+                    <div id="tarefas-cadastradas" class="list-group" style="margin-top: 16px;">
                     </div>
 
                 </div>
@@ -142,7 +153,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
-                        <input type="hidden" name="servico.id" value="${tarefa.id}"/>
+                        <input type="hidden" name="tarefa.id" value="${tarefa.id}"/>
                         <!-- Modal content-->
                         <div class="modal-content">
                             <div class="modal-header">

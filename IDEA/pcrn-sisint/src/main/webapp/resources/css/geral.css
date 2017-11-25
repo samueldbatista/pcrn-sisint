@@ -13,3 +13,8 @@
     border-bottom: 1px solid #3c3c3c;
     color: #3c3c3c;
 }
+
+.painel-sisint{
+    border-color: #ddd;
+    border-radius: 0;
+}
