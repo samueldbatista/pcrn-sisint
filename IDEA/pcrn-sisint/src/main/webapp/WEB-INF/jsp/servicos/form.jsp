@@ -42,7 +42,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="panel">
+        <div class="panel painel-cadastro-sisint">
             <form id="form-servico-tarefa" action="${linkTo[ServicosController].salvar}" method="post">
                 <c:forEach items="${listaLogs}" var="log" varStatus="status">
                     <input type="hidden" name="servico.logServicos[${status.index}].id" value="${log.id}"/>
