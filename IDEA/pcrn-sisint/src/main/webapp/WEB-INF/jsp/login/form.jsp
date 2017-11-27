@@ -20,7 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
 </head>
-<body style="background-color: #6fb4c8">
+<body style="background-color: #3498db;">
 <div class="container">
     <c:set var="ctx" value="${pageContext.request.contextPath}"/>
     <div class="panel col-md-4 col-md-offset-4" style="margin-top:100px;">
