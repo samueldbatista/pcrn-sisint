@@ -10,6 +10,7 @@
         <class>br.pcrn.sisint.dominio.Servico</class>
         <class>br.pcrn.sisint.dominio.Setor</class>
         <class>br.pcrn.sisint.dominio.Tarefa</class>
+        <class>br.pcrn.sisint.dominio.LogServico</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

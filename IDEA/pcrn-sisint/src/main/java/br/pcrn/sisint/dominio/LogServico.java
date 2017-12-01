@@ -4,12 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@SequenceGenerator(name = "log_servico_id_seq", sequenceName = "log_servico_id_seq", allocationSize = 1)
 public class LogServico {
 
     @Id
-    @SequenceGenerator(name = "log_servico_id_seq", sequenceName = "log_servico_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "log_servico_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String log;

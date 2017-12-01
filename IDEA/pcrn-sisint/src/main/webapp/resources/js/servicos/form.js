@@ -64,8 +64,8 @@ $(function () {
         });
     });
 
-    $(".datePicker").datepicker({
-        format: "dd/mm/yyyy"
-    });
+    // $(".datePicker").datepicker({
+    //     format: "dd/mm/yyyy"
+    // });
 
 });

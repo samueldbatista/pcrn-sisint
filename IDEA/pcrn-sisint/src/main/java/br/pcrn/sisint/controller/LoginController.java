@@ -31,7 +31,7 @@ public class LoginController {
             resultado.forwardTo(LoginController.class).form();
         } else{
             usuarioLogado.setUsuario(usuarioLogin);
-            resultado.redirectTo(ServicosController.class).lista();
+            resultado.redirectTo(InicioController.class).index();
         }
     }
 

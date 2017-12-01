@@ -9,9 +9,21 @@
     margin-right: 16px;
 }
 
+.caixa-pontilhada {
+    border: 1px solid;
+    border-style: dashed;
+}
+.telefone {
+    font-weight: 600;
+    color: #0270ce;
+}
 .tituloCadastro{
     border-bottom: 1px solid #3c3c3c;
     color: #3c3c3c;
+}
+
+.cor-titulo-azul {
+    color: #001872;
 }
 
 .painel-sisint{

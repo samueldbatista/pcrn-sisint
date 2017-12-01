@@ -49,6 +49,19 @@ public class ServicoJpaDao implements ServicoDao {
     }
 
     @Override
+    public Long contarTotalServicos() {
+        Query query = manager.createQuery("select count(s) from Servico s where s.deletado = false");
+        return (Long) query.getSingleResult();
+    }
+
+    @Override
+    public Long contarServicosStatus(StatusServico statusServico) {
+        Query query = manager.createQuery("select count(s) from Servico s where s.deletado = false AND s.statusServico = :status");
+        query.setParameter("status",statusServico);
+        return (Long) query.getSingleResult();
+    }
+
+    @Override
     public List<Servico> listarServicos() {
         Query query = manager.createQuery("select s from Servico s where s.deletado = false");
         return query.getResultList();

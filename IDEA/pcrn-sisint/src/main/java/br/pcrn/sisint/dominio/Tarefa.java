@@ -7,12 +7,10 @@ import java.time.LocalDate;
  * Created by samue on 09/09/2017.
  */
 @Entity
-@SequenceGenerator(name = "tarefa_id_seq", sequenceName = "tarefa_id_seq", allocationSize = 1)
 public class Tarefa {
 
     @Id
-    @SequenceGenerator(name = "tarefa_id_seq", sequenceName = "tarefa_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "tarefa_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String titulo;
@@ -115,4 +113,6 @@ public class Tarefa {
     public void setDataAbertura(LocalDate dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
+
+
 }

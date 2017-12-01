@@ -50,8 +50,9 @@ public class ServicosNegocio {
                 .collect(Collectors.toList());
     }
 
-    public String gerarCodigoServico (Long id) {
-        return "S" + LocalDate.now().getYear() + id;
+    public String gerarCodigoServico () {
+        Long qt = servicoDao.contarTotalServicos();
+        return "S" + LocalDate.now().getYear() + qt;
     }
 
     public void gerarLog(Servico servico) {
@@ -105,7 +106,7 @@ public class ServicosNegocio {
     }
 
     public void gerarCodigoTarefas(String codigoServico, List<Tarefa> tarefas) {
-        Long id = tarefaJpaDao.ultimoId();
+        Long id = tarefaJpaDao.contarTotalTarefas();
         String codigoTarefa;
         if(!tarefas.isEmpty()){
             for (Tarefa tarefa: tarefas) {

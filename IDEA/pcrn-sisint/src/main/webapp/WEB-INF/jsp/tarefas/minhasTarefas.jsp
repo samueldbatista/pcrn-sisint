@@ -36,10 +36,10 @@
                             <tr>
                                 <td>${tarefa.titulo}</td>
                                 <td><span class="label">${tarefa.statusTarefa.chave}</span></td>
-                                <td>${tarefa.dataFechamento}</td>
+                                <td class="valor-date">${tarefa.dataFechamento}</td>
                                 <td>${tarefa.tecnico.nome}</td>
                                 <td><a href="#"><i class="fa fa-eye" aria-hidden="false"></i></a>
-                                    <a href="${linkTo[ServicosController].editar}?id=${tarefa.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a href="${linkTo[TarefasController].editar}?id=${tarefa.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         </c:forEach>

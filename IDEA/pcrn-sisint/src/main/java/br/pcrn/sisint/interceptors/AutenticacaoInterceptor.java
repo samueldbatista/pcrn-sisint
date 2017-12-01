@@ -6,6 +6,7 @@ import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.controller.ControllerMethod;
 import br.com.caelum.vraptor.interceptor.SimpleInterceptorStack;
+import br.pcrn.sisint.controller.InicioController;
 import br.pcrn.sisint.controller.LoginController;
 import br.pcrn.sisint.dominio.TipoUsuario;
 import br.pcrn.sisint.dominio.UsuarioLogado;

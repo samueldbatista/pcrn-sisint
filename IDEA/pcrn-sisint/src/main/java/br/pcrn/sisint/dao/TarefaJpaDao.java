@@ -25,7 +25,6 @@ public class TarefaJpaDao implements TarefaDao{
         } else {
             manager.persist(tarefa);
         }
-
     }
 
     @Override
@@ -57,6 +56,12 @@ public class TarefaJpaDao implements TarefaDao{
         Query query = manager.createNativeQuery("SELECT last_value from tarefa_id_seq");
         BigInteger nextId = (BigInteger) query.getSingleResult();
         return Long.valueOf(nextId.toString());
+    }
+
+    @Override
+    public Long contarTotalTarefas() {
+        Query query = manager.createQuery("select count(t) from Tarefa t");
+        return (Long) query.getSingleResult();
     }
 
     @Override

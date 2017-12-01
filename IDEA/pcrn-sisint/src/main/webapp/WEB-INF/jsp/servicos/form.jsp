@@ -37,7 +37,6 @@
         <%--<script src="${ctx}/resources/js/servicos/saveAjax.js"></script>--%>
         <script src="${ctx}/resources/js/ConverterObjetoParaVRaptor.js"></script>
         <script src="${ctx}/resources/plugins/jquerySteps/jquery.steps.min.js"></script>
-        <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"></script>
         <script src="${ctx}/resources/js/servicos/tarefas.js"></script>
     </jsp:attribute>
 
@@ -138,7 +137,7 @@
                     <div id="cadastro-tarefa">
                         <div class="row" align="right">
                             <button id="btnAdicionarTarefa" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                                Adicionar
+                                Adicionar Tarefa
                             </button>
                         </div>
                     </div>
@@ -219,7 +218,7 @@
                                     </div>
                                     <label>Possui pendência:
                                         <div style="margin-left: 16px; float: right;">
-                                            <input type="checkbox" name="tarefa.pendencia" value="${tarefa.pendencia}">
+                                            <input type="checkbox" name="tarefa.pendente" value="${tarefa.pendente}"/>
                                         </div>
                                     </label>
                                     <div class="form-group">

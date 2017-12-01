@@ -6,11 +6,9 @@ import javax.persistence.*;
  * Created by samue on 08/09/2017.
  */
 @Entity
-@SequenceGenerator(name = "setor_id_seq", sequenceName = "setor_id_seq", allocationSize = 1)
 public class Setor {
     @Id
-    @SequenceGenerator(name = "setor_id_seq", sequenceName = "setor_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "setor_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private boolean deletado;
     private String nome;

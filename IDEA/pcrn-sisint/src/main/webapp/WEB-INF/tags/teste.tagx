@@ -40,14 +40,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">SisInt</a>
+                <a class="navbar-brand" href="${linkTo[InicioController].index}">SisInt</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="${linkTo[ServicosController].lista}">Home</a></li>
+                    <li><a href="${linkTo[InicioController].index}">Home</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Serviços <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="${linkTo[ServicosController].form}">Novo Serviço</a></li>
+                            <li class="divider"></li>
                             <c:if test="${usuarioLogado.isAdmin()}">
                             <li><a href="${linkTo[ServicosController].lista}">Todos os Serviços</a>
                             </li>
@@ -61,7 +63,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="${linkTo[ServicosController].lista}">Listar tarefas </a></li>
                             <li><a href="#">Tarefas em aberto</a></li>
-                            <li><a href="#">Minhas tarefas</a></li>
+                            <li><a href="${linkTo[TarefasController].minhasTarefas}">Minhas tarefas</a></li>
                         </ul>
                     </li>
                     <c:if test="${usuarioLogado.isAdmin()}">
@@ -106,6 +108,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="${ctx}/resources/template-admin/js/custom.min.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/dateRangePicker/moment.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/js/init.js"><c:out value=""/></script>
 
     <jsp:invoke fragment="rodape"/>
     </body>

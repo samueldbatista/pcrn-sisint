@@ -79,9 +79,9 @@ public class ServicosController {
         } else {
             servico.setStatusServico(StatusServico.EM_EXECUCAO);
         }
-        Long ultimo=  servicoDao.ultimoId();
+
         if(servico.getCodigoServico() == null) {
-            servico.setCodigoServico(servicosNegocio.gerarCodigoServico(ultimo));
+            servico.setCodigoServico(servicosNegocio.gerarCodigoServico());
             if(servico.getTarefas() != null) {
                 if(!servico.getTarefas().isEmpty()) {
                     servicosNegocio.gerarCodigoTarefas(servico.getCodigoServico(), servico.getTarefas());
@@ -106,7 +106,7 @@ public class ServicosController {
         }
         validador.onErrorRedirectTo(this).form();
         this.servicoDao.salvar(servico);
-        result.redirectTo((this)).lista();
+        result.redirectTo(InicioController.class).index();
     }
 
     public void logServico(Long id) {
@@ -142,6 +142,12 @@ public class ServicosController {
         if(servico != null) {
             for (Tarefa tarefa: servico.getTarefas()) {
                 JsonObject jsonObject = new JsonObject();
+                String pendente;
+                if(tarefa.isPendente()) {
+                    pendente="true";
+                } else {
+                    pendente="false";
+                }
                 jsonObject.addProperty("id", tarefa.getId());
                 jsonObject.addProperty("titulo", tarefa.getTitulo());
                 jsonObject.addProperty("statusValor", tarefa.getStatusTarefa().getValor());
@@ -152,6 +158,7 @@ public class ServicosController {
                 jsonObject.addProperty("tecnicoId", tarefa.getTecnico().getId());
                 jsonObject.addProperty("codigoTarefa", tarefa.getCodigoTarefa());
                 jsonObject.addProperty("dataAbertura", tarefa.getDataAbertura().toString());
+                jsonObject.addProperty("pendente",pendente);
                 listaServicos.add(jsonObject);
             }
             result.use(Results.json()).withoutRoot().from(listaServicos).recursive().serialize();

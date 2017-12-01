@@ -8,12 +8,10 @@ import java.util.List;
  * Created by samue on 09/09/2017.
  */
 @Entity
-@SequenceGenerator(name = "servico_id_seq", sequenceName = "servico_id_seq", allocationSize = 1)
 public class Servico {
 
     @Id
-    @SequenceGenerator(name = "servico_id_seq", sequenceName = "servico_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "servico_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(columnDefinition = "text")
