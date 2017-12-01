@@ -19,6 +19,8 @@
     <jsp:attribute name="rodape">
     </jsp:attribute>
     <jsp:body>
+        <div class="row">
+        <div class="panel painel-sisint">
         <div class="row tile_count">
             <div class="col-md-2 col-md-offset-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-tasks"></i> Total de serviços</span>
@@ -36,6 +38,8 @@
                 <span class="count_top"><i class="fa fa-tasks"></i> Total de Tarefas</span>
                 <div class="count">${totalTarefas}</div>
             </div>
+        </div>
+        </div>
         </div>
         <div class="row">
             <div class="panel painel-sisint" style="min-height: 200px;">

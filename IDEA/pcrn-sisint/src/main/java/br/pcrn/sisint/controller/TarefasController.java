@@ -60,7 +60,7 @@ public class TarefasController extends ControladorSisInt {
 
     }
 
-    public void listar(){
+    public void lista(){
         this.resultado.include("tarefas", tarefaDao.todos());
     }
 

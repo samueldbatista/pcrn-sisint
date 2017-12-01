@@ -1,15 +1,20 @@
 /**
- * Created by samuel on 15/09/2017.
+ * Created by samue on 15/09/2017.
  */
-//Variável global salvar tarefas
-var listaTarefas = [];
-$(function () {
+
+$(document).ready(function () {
     $(".datePicker").datepicker({
         format: "dd/mm/yyyy"
     });
-    
-    $(".valor-date").each(function () {
-        console.log($(this).val());
-    })
-    
+
+    $(".date-column").each(function () {
+        var data =  $(this).text();
+        data = moment(data, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        $(this).text(data);
+    });
 });
+
+
+
+
+

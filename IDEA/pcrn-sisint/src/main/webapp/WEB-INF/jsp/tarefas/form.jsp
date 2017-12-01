@@ -18,7 +18,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="panel">
+        <div class="panel painel-sisint">
             <div class="panel-heading">
                 <h4 align="center"> Atualizar Tarefa</h4>
             </div>

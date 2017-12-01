@@ -15,7 +15,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div class="panel">
+        <div class="panel painel-sisint">
             <div class="panel-heading">
                 <div class="panel-title">Tarefas atribuídas a ${usuarioLogado.usuario.nome}</div>
             </div>
@@ -36,7 +36,7 @@
                             <tr>
                                 <td>${tarefa.titulo}</td>
                                 <td><span class="label">${tarefa.statusTarefa.chave}</span></td>
-                                <td class="valor-date">${tarefa.dataFechamento}</td>
+                                <td class="date-column">${tarefa.dataFechamento}</td>
                                 <td>${tarefa.tecnico.nome}</td>
                                 <td><a href="#"><i class="fa fa-eye" aria-hidden="false"></i></a>
                                     <a href="${linkTo[TarefasController].editar}?id=${tarefa.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
