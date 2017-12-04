@@ -32,9 +32,6 @@
     </jsp:attribute>
 
     <jsp:attribute name="rodape">
-
-        <%--<script src="${ctx}/resources/js/servicos/form.js"></script>--%>
-        <%--<script src="${ctx}/resources/js/servicos/saveAjax.js"></script>--%>
         <script src="${ctx}/resources/js/ConverterObjetoParaVRaptor.js"></script>
         <script src="${ctx}/resources/plugins/jquerySteps/jquery.steps.min.js"></script>
         <script src="${ctx}/resources/js/servicos/tarefas.js"></script>
@@ -116,7 +113,7 @@
                             <div class="form-group col-md-6">
                                 <label for="tecnico-servico">Ténico Responsável</label>
                                 <select class="form-control input-sm" id="tecnico-servico" name="servico.tecnico.id">
-                                    <option value=""></option>
+                                    <option></option>
                                     <c:forEach items="${usuarios}" var="usuario">
                                         <c:if test="${usuario.valor == servico.tecnico.id}">
                                             <option value="${usuario.valor}" selected="true">${usuario.chave}</option>

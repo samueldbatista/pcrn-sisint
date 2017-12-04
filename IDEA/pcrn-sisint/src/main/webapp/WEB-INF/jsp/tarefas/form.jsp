@@ -14,7 +14,16 @@
     <jsp:attribute name="cabecalho">
     </jsp:attribute>
     <jsp:attribute name="rodape">
+        <script>
+            $(document).ready(function () {
+                console.log("entrou no js");
+                $("#formTarefa").validator();
 
+                var data = moment($(".datePicker").val(), "YYYY-MM-DD").format("DD/MM/YYYY");
+                $(".datePicker").val(data);
+                console.log($(".datePicker").val());
+            });
+        </script>
     </jsp:attribute>
 
     <jsp:body>
@@ -23,15 +32,15 @@
                 <h4 align="center"> Atualizar Tarefa</h4>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" action="${linkTo[TarefaController].salvar}" method="post">
+                <form id="formTarefa" class="form-horizontal" action="${linkTo[TarefasController].salvar}" method="post">
                     <input type="hidden" name="tarefa.id" value="${tarefa.id}">
                     <input type="hidden" name="tarefa.codigoTarefa" value="${tarefa.codigoTarefa}">
                     <input type="hidden" name="tarefa.servico.id" value="${tarefa.servico.id}">
-                    <input type="hidden" name="tarefa.servico.id" value="${tarefa.dataAbertura}">
+                    <input type="hidden" name="tarefa.dataAbertura" value="${tarefa.dataAbertura}">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">
-                            <input class="form-control" name="tarefa.titulo" type="text" value="${tarefa.titulo}">
+                            <input class="form-control" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}" name="tarefa.titulo" type="tel" required value="${tarefa.titulo}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -75,13 +84,18 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Possui pendência: </label>
                         <div class="col-sm-10">
-                            <input type="checkbox" name="tarefa.pendente" value="${tarefa.pendente}"/>
+                            <c:if test="${tarefa.pendente}">
+                            <input type="checkbox" checked="true" name="tarefa.pendente" value="${tarefa.pendente}"/>
+                            </c:if>
+                            <c:if test="${!tarefa.pendente}">
+                                <input type="checkbox" name="tarefa.pendente" value="${tarefa.pendente}"/>
+                            </c:if>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Descrição</label>
                         <div class="col-sm-10">
-                             <textarea class="form-control" name="tarefa.descricao" rows="2"
+                             <textarea class="form-control" minlength="6" name="tarefa.descricao" rows="2"
                                        required="true" >${tarefa.descricao}</textarea>
                         </div>
                     </div>

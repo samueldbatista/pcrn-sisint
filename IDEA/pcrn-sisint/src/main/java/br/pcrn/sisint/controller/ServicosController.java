@@ -1,8 +1,6 @@
 package br.pcrn.sisint.controller;
 
 import br.com.caelum.vraptor.*;
-import br.com.caelum.vraptor.validator.DefaultValidator;
-import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.pcrn.sisint.anotacoes.Seguranca;
@@ -14,7 +12,6 @@ import br.pcrn.sisint.negocio.ServicosNegocio;
 import br.pcrn.sisint.util.OpcaoSelect;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import sun.rmi.runtime.Log;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
@@ -70,11 +67,7 @@ public class ServicosController {
             }
         }
 
-        if(servico.getTitulo() == null) {
-            validador.add( new SimpleMessage("titulo", "Titulo é obrigatório"));
-        }
-
-        if(servico.getTarefas() == null || servico.getTecnico() == null) {
+        if(servico.getTecnico() == null) {
             servico.setStatusServico(StatusServico.EM_ESPERA);
         } else {
             servico.setStatusServico(StatusServico.EM_EXECUCAO);
@@ -104,7 +97,7 @@ public class ServicosController {
                 servico.getLogServicos().add(logServico);
             }
         }
-        validador.onErrorRedirectTo(this).form();
+
         this.servicoDao.salvar(servico);
         result.redirectTo(InicioController.class).index();
     }
@@ -199,5 +192,4 @@ public class ServicosController {
         result.include(servico);
         result.of(this).form();
     }
-
 }

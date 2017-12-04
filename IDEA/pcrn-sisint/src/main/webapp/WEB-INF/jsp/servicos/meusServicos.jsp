@@ -30,7 +30,7 @@
     <jsp:body>
         <div class="panel painel-sisint">
             <div class="panel-heading">
-                <div class="panel-title">Serviços atribuídos a mim</div>
+                <div class="panel-title">Serviços atribuídos a ${usuarioLogado.usuario.nome}</div>
             </div>
             <div class="panel-body" style="padding-top: 0px;">
                 <a class="btn btn-info" style="margin-bottom: 16px;" href="${linkTo[ServicosController].form}">Cadastrar</a>

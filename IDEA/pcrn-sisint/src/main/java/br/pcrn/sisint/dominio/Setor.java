@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Setor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private boolean deletado;
     private String nome;

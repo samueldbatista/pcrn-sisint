@@ -110,6 +110,8 @@
     <script src="${ctx}/resources/plugins/dateRangePicker/moment.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"><c:out value=""/></script>
     <script src="${ctx}/resources/js/init.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/plugins/jqueryValidate/jquery.validate.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/plugins/bootstrapValidator/validator.js"><c:out value=""/></script>
 
     <jsp:invoke fragment="rodape"/>
     </body>
