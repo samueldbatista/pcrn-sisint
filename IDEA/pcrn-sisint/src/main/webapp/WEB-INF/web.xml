@@ -31,6 +31,10 @@
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
 
+    <session-config>
+        <session-timeout>960</session-timeout>    <!-- 20 minutes for session objects -->
+    </session-config>
+
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/jsp/erros/404.jsp</location>

@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body" style="padding-top: 0px;">
                 <div class="tabela-tarefas">
-                    <table id="tabela-tarefa" class="table table-bordered">
+                    <table id="tabela-tarefa" class="table table-bordered tabela">
                         <thead>
                         <tr>
                             <th>Titulo</th>

@@ -10,6 +10,7 @@ public class Setor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private boolean deletado;
     private String nome;
     private String telefone1;

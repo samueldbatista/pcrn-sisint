@@ -17,30 +17,25 @@
     <jsp:body>
         <div class="panel painel-sisint">
             <div class="panel-heading">
-                <div class="panel-title">Gerenciamento de tarefas</div>
+                <div class="panel-title">Gerenciamento de setores</div>
             </div>
             <div class="panel-body" style="padding-top: 0px;">
-                <a class="btn btn-info" style="margin-bottom: 16px;" href="${linkTo[TarefasController].form}">Cadastrar</a>
+                <a class="btn btn-info" style="margin-bottom: 16px;" href="${linkTo[SetorController].form}">Cadastrar</a>
                 <div class="tabela-servicos">
                     <table id="tabela-servico" class="table table-bordered tabela">
                         <thead>
                         <tr>
-                            <th>Titulo</th>
-                            <th>Status</th>
-                            <th>Data de Fechamento</th>
-                            <th>Técnico</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${tarefas}" var="tarefa">
+                        <c:forEach items="${setores}" var="setor">
                             <tr>
-                                <td>${tarefa.titulo}</td>
-                                <td><span class="label">${tarefa.statusTarefa.chave}</span></td>
-                                <td class="date-column">${tarefa.dataFechamento}</td>
-                                <td>${tarefa.tecnico.nome}</td>
-                                <td><a href="#"><i class="fa fa-eye" aria-hidden="false"></i></a>
-                                    <a href="${linkTo[TarefasController].editar}?id=${tarefa.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                <td>${setor.nome}</td>
+                                <td>${setor.telefone1}</td>
+                                <td><a href="${linkTo[SetorController].editar}?id=${setor.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                     <a href="#"><i class="fa fa-trash"></i></a></td>
                             </tr>
                         </c:forEach>

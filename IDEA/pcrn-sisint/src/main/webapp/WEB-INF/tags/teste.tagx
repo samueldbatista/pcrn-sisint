@@ -66,6 +66,14 @@
                             <li><a href="${linkTo[TarefasController].minhasTarefas}">Minhas tarefas</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Setores <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="${linkTo[SetorController].form}">Cadastrar Setor</a></li>
+                            <li class="divider"></li>
+                            <li><a href="${linkTo[SetorController].lista}">Setores</a></li>
+                        </ul>
+                    </li>
                     <c:if test="${usuarioLogado.isAdmin()}">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuários <span class="caret"></span></a>
@@ -83,14 +91,7 @@
     </nav>
 
     <div class="container" style="width: 90%;">
-        <ul class="errors">
-            <c:forEach items="${errors}" var="erro">
-                <li>
-                    ${erro.category}
-                    ${erro.message}
-                </li>
-            </c:forEach>
-        </ul>
+        <jsp:include page="/WEB-INF/jsp/erros/msgError.jsp"/>
         <jsp:doBody/>
     </div>
 
@@ -109,6 +110,8 @@
     <script src="${ctx}/resources/template-admin/js/custom.min.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/dateRangePicker/moment.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/dataPicker/dataPicker-bootstrap.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/plugins/dataTables/datatables.js"><c:out value=""/></script>
+    <script src="${ctx}/resources/plugins/dataTables/Buttons-1.4.2/js/buttons.html5.js"><c:out value=""/></script>
     <script src="${ctx}/resources/js/init.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/jqueryValidate/jquery.validate.js"><c:out value=""/></script>
     <script src="${ctx}/resources/plugins/bootstrapValidator/validator.js"><c:out value=""/></script>

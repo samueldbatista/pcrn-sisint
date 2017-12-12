@@ -19,7 +19,7 @@
     <jsp:attribute name="rodape">
     </jsp:attribute>
     <jsp:body>
-        <div class="row">
+        <%--<div class="row">--%>
         <div class="panel painel-sisint">
         <div class="row tile_count">
             <div class="col-md-2 col-md-offset-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -40,8 +40,8 @@
             </div>
         </div>
         </div>
-        </div>
-        <div class="row">
+        <%--</div>--%>
+        <%--<div class="row">--%>
             <div class="panel painel-sisint" style="min-height: 200px;">
                 <div class="panel-body">
                     <div class="col-md-12">
@@ -65,6 +65,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <%--</div>--%>
     </jsp:body>
 </tags:teste>

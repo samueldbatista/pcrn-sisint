@@ -8,7 +8,11 @@ public abstract class ControladorSisInt {
 
     protected final Result resultado;
 
+    @Inject
     public ControladorSisInt(Result resultado) {
         this.resultado = resultado;
     }
+
+
+
 }

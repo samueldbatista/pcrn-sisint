@@ -24,6 +24,16 @@ public class SetorJpaDao implements SetorDao{
         this.manager = entityManager;
     }
 
+    @Override
+    public void salvar(Setor setor) {
+        if(setor.getId() != null){
+            this.manager.merge(setor);
+        } else{
+            this.manager.persist(setor);
+        }
+
+    }
+
 
     @Override
     public List<Setor> todos() {
@@ -32,4 +42,11 @@ public class SetorJpaDao implements SetorDao{
         return query.getResultList();
     }
 
+    @Override
+    public Setor buscarPorId(Long id){
+        Query query = manager.createQuery("select s from Setor s where s.id = :id");
+
+        query.setParameter("id", id);
+        return (Setor) query.getSingleResult();
+    }
 }

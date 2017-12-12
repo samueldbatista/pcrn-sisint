@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Título</label>
                         <div class="col-sm-10">
-                            <input class="form-control" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}" name="tarefa.titulo" type="tel" required value="${tarefa.titulo}">
+                            <input class="form-control" minlength="4" name="tarefa.titulo" type="text" required value="${tarefa.titulo}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -84,11 +84,11 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Possui pendência: </label>
                         <div class="col-sm-10">
-                            <c:if test="${tarefa.pendente}">
-                            <input type="checkbox" checked="true" name="tarefa.pendente" value="${tarefa.pendente}"/>
-                            </c:if>
                             <c:if test="${!tarefa.pendente}">
-                                <input type="checkbox" name="tarefa.pendente" value="${tarefa.pendente}"/>
+                                <input type="checkbox" name="tarefa.pendente" checked="${tarefa.pendente}"/>
+                            </c:if>
+                            <c:if test="${tarefa.pendente}">
+                                <input type="checkbox" name="tarefa.pendente"/>
                             </c:if>
                         </div>
                     </div>
