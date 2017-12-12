@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_1_8" jdk="1.8" jdk_type="JavaSDK">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/classes"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<lib name="Maven: javax.el:el-api:2.2" scope="PROVIDED"/>
+	<lib name="Maven: javax.servlet:javax.servlet-api:3.1.0" scope="PROVIDED"/>
+	<lib name="Maven: com.github.dblock.waffle:waffle-jna:1.7" scope="RUNTIME"/>
+	<lib name="Maven: net.java.dev.jna:jna:4.1.0" scope="RUNTIME"/>
+	<lib name="Maven: net.java.dev.jna:jna-platform:4.1.0" scope="RUNTIME"/>
+	<lib name="Maven: org.slf4j:slf4j-simple:1.7.7" scope="RUNTIME"/>
+	<levels>
+		<level name="Maven: br.com.caelum:vraptor:4.2.0-RC5" value="project"/>
+		<level name="Maven: com.google.guava:guava:15.0" value="project"/>
+		<level name="Maven: br.com.caelum:iogi:1.0.1" value="project"/>
+		<level name="Maven: org.javassist:javassist:3.18.1-GA" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-api:1.7.5" value="project"/>
+		<level name="Maven: net.vidageek:mirror:1.6.1" value="project"/>
+		<level name="Maven: com.thoughtworks.paranamer:paranamer:2.7" value="project"/>
+		<level name="Maven: com.thoughtworks.xstream:xstream:1.4.7" value="project"/>
+		<level name="Maven: xmlpull:xmlpull:1.1.3.1" value="project"/>
+		<level name="Maven: xpp3:xpp3_min:1.1.4c" value="project"/>
+		<level name="Maven: com.google.code.gson:gson:2.2.4" value="project"/>
+		<level name="Maven: javax.interceptor:javax.interceptor-api:1.2" value="project"/>
+		<level name="Maven: javax.ejb:javax.ejb-api:3.2" value="project"/>
+		<level name="Maven: javax.transaction:javax.transaction-api:1.2" value="project"/>
+		<level name="Maven: javax.persistence:persistence-api:1.0.2" value="project"/>
+		<level name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.0-api:1.0.1.Final" value="project"/>
+		<level name="Maven: org.apache.openejb:javaee-api:6.0-6" value="project"/>
+		<level name="Maven: br.com.caelum.vraptor:vraptor-jpa:1.0.2" value="project"/>
+		<level name="Maven: org.eclipse.persistence:javax.persistence:2.0.0" value="project"/>
+		<level name="Maven: org.hibernate:hibernate-entitymanager:5.2.8.Final" value="project"/>
+		<level name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" value="project"/>
+		<level name="Maven: org.hibernate:hibernate-core:5.2.8.Final" value="project"/>
+		<level name="Maven: antlr:antlr:2.7.7" value="project"/>
+		<level name="Maven: org.jboss:jandex:2.0.3.Final" value="project"/>
+		<level name="Maven: com.fasterxml:classmate:1.3.0" value="project"/>
+		<level name="Maven: dom4j:dom4j:1.6.1" value="project"/>
+		<level name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" value="project"/>
+		<level name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" value="project"/>
+		<level name="Maven: net.bytebuddy:byte-buddy:1.6.6" value="project"/>
+		<level name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.1.Final" value="project"/>
+		<level name="Maven: org.hibernate:hibernate-ehcache:5.2.8.Final" value="project"/>
+		<level name="Maven: net.sf.ehcache:ehcache:2.10.3" value="project"/>
+		<level name="Maven: org.jboss.weld.servlet:weld-servlet-core:2.1.2.Final" value="project"/>
+		<level name="Maven: org.jboss.weld:weld-spi:2.1.Final" value="project"/>
+		<level name="Maven: org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.0.Alpha1" value="project"/>
+		<level name="Maven: org.jboss.weld:weld-core-impl:2.1.2.Final" value="project"/>
+		<level name="Maven: javax.enterprise:cdi-api:1.1" value="project"/>
+		<level name="Maven: org.jboss.weld:weld-api:2.1.Final" value="project"/>
+		<level name="Maven: org.jboss.classfilewriter:jboss-classfilewriter:1.0.4.Final" value="project"/>
+		<level name="Maven: org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.Alpha1" value="project"/>
+		<level name="Maven: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Alpha3" value="project"/>
+		<level name="Maven: javax.el:el-api:2.2" value="project"/>
+		<level name="Maven: javax.servlet:jstl:1.2" value="project"/>
+		<level name="Maven: javax.servlet:javax.servlet-api:3.1.0" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-log4j12:1.7.24" value="project"/>
+		<level name="Maven: log4j:log4j:1.2.17" value="project"/>
+		<level name="Maven: org.hibernate:hibernate-validator-cdi:5.4.0.Final" value="project"/>
+		<level name="Maven: org.hibernate:hibernate-validator:5.4.0.Final" value="project"/>
+		<level name="Maven: jstl:jstl:1.2" value="project"/>
+		<level name="Maven: javax.inject:javax.inject:1" value="project"/>
+		<level name="Maven: com.h2database:h2:1.3.175" value="project"/>
+		<level name="Maven: org.postgresql:postgresql:9.4-1200-jdbc41" value="project"/>
+		<level name="Maven: com.github.dblock.waffle:waffle-jna:1.7" value="project"/>
+		<level name="Maven: net.java.dev.jna:jna:4.1.0" value="project"/>
+		<level name="Maven: net.java.dev.jna:jna-platform:4.1.0" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-simple:1.7.7" value="project"/>
+		<level name="Maven: javax.annotation:javax.annotation-api:1.3" value="project"/>
+		<level name="Maven: javax.transaction:jta:1.1" value="project"/>
+		<level name="Maven: javax.validation:validation-api:1.1.0.Final" value="project"/>
+	</levels>
+</component>
